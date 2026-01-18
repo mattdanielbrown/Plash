@@ -2,7 +2,7 @@ import SwiftUI
 import LinkPresentation
 
 @MainActor
-final class WebsitesController {
+final class WebsitesController: ObservableObject {
 	static let shared = WebsitesController()
 
 	private var cancellables = Set<AnyCancellable>()

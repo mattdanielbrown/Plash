@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plash Mouse Position Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        #cursor {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            transition: transform 0.1s ease;
+            z-index: 1000;
+        }
+
+        #info {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Monaco', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            backdrop-filter: blur(10px);
+            max-width: 400px;
+        }
+
+        #status {
+            color: #4ade80;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #coords {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .coord-line {
+            margin: 5px 0;
+        }
+
+        .label {
+            color: #a78bfa;
+            display: inline-block;
+            width: 140px;
+        }
+
+        .value {
+            color: #fbbf24;
+        }
+
+        .parallax-circle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .circle1 {
+            width: 200px;
+            height: 200px;
+            background: #f472b6;
+            top: 20%;
+            left: 20%;
+        }
+
+        .circle2 {
+            width: 150px;
+            height: 150px;
+            background: #60a5fa;
+            top: 60%;
+            left: 70%;
+        }
+
+        .circle3 {
+            width: 100px;
+            height: 100px;
+            background: #34d399;
+            top: 40%;
+            right: 20%;
+        }
+
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 24px;
+        }
+
+        .instruction {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 12px;
+            color: #d1d5db;
+        }
+    </style>
+</head>
+<body>
+    <div id="cursor"></div>
+
+    <div class="parallax-circle circle1"></div>
+    <div class="parallax-circle circle2"></div>
+    <div class="parallax-circle circle3"></div>
+
+    <div id="info">
+        <h1>🖱️ Mouse Position Test</h1>
+        <div id="status">Waiting for mouse events...</div>
+        <div id="coords">
+            <div class="coord-line">
+                <span class="label">X (pixels):</span>
+                <span class="value" id="x">-</span>
+            </div>
+            <div class="coord-line">
+                <span class="label">Y (pixels):</span>
+                <span class="value" id="y">-</span>
+            </div>
+            <div class="coord-line">
+                <span class="label">Normalized X:</span>
+                <span class="value" id="normX">-</span>
+            </div>
+            <div class="coord-line">
+                <span class="label">Normalized Y:</span>
+                <span class="value" id="normY">-</span>
+            </div>
+            <div class="coord-line">
+                <span class="label">Window Size:</span>
+                <span class="value" id="windowSize">-</span>
+            </div>
+        </div>
+        <div class="instruction">
+            ℹ️ Enable "Send mouse position to website" in Plash Settings → Advanced to see this in action.
+        </div>
+    </div>
+
+    <script>
+        const cursor = document.getElementById('cursor');
+        const status = document.getElementById('status');
+        const circles = document.querySelectorAll('.parallax-circle');
+
+        let hasReceivedEvent = false;
+
+        // Listen for Plash mouse move events
+        document.addEventListener('plashMouseMove', (event) => {
+            const { x, y, normalizedX, normalizedY, windowWidth, windowHeight } = event.detail;
+
+            if (!hasReceivedEvent) {
+                hasReceivedEvent = true;
+                status.textContent = '✅ Receiving mouse events!';
+                status.style.color = '#4ade80';
+            }
+
+            // Update cursor position
+            cursor.style.left = x + 'px';
+            cursor.style.top = y + 'px';
+
+            // Update coordinate display
+            document.getElementById('x').textContent = Math.round(x);
+            document.getElementById('y').textContent = Math.round(y);
+            document.getElementById('normX').textContent = normalizedX.toFixed(3);
+            document.getElementById('normY').textContent = normalizedY.toFixed(3);
+            document.getElementById('windowSize').textContent = `${windowWidth} × ${windowHeight}`;
+
+            // Parallax effect on circles
+            circles.forEach((circle, index) => {
+                const speed = (index + 1) * 20;
+                const xOffset = (normalizedX - 0.5) * speed;
+                const yOffset = (normalizedY - 0.5) * speed;
+                circle.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+        });
+
+        // Check for global variable (alternative method)
+        setInterval(() => {
+            if (window.plashMouse && !hasReceivedEvent) {
+                hasReceivedEvent = true;
+                status.textContent = '✅ Receiving mouse events via window.plashMouse!';
+                status.style.color = '#4ade80';
+            }
+        }, 1000);
+
+        // Detect if running in Plash
+        if (document.documentElement.classList.contains('is-plash-app')) {
+            console.log('Running in Plash!');
+        }
+    </script>
+</body>
+</html>

@@ -131,6 +131,33 @@ final class WebViewController: NSViewController {
 
 		didLoadSubject.send()
 	}
+
+	/**
+	Inject mouse position into the web view.
+	*/
+	func injectMousePosition(_ position: CGPoint, windowSize: CGSize) {
+		let x = position.x * windowSize.width
+		let y = (1.0 - position.y) * windowSize.height // Flip Y for web coordinates (web uses top-left origin)
+
+		let script = """
+			(function() {
+				const event = new CustomEvent('plashMouseMove', {
+					detail: {
+						x: \(x),
+						y: \(y),
+						normalizedX: \(position.x),
+						normalizedY: \(1.0 - position.y),
+						windowWidth: \(windowSize.width),
+						windowHeight: \(windowSize.height)
+					}
+				});
+				document.dispatchEvent(event);
+				window.plashMouse = event.detail;
+			})();
+		"""
+
+		webView.evaluateJavaScript(script, completionHandler: nil)
+	}
 }
 
 extension WebViewController: WKNavigationDelegate {

@@ -7,6 +7,14 @@ final class DesktopWindow: NSWindow {
 
 	private var cancellables = Set<AnyCancellable>()
 
+	private(set) lazy var mouseTracker = MouseTracker(window: self)
+
+	var sendMouseEvents: Bool = false {
+		didSet {
+			mouseTracker.isEnabled = sendMouseEvents && !isInteractive
+		}
+	}
+
 	var targetDisplay: Display? {
 		didSet {
 			setFrame()
@@ -19,12 +27,18 @@ final class DesktopWindow: NSWindow {
 				level = Defaults[.bringBrowsingModeToFront] ? .floating : (.desktopIcon + 1) // The `+ 1` fixes a weird issue where the window is sometimes not interactive. (macOS 11.2.1)
 				makeKeyAndOrderFront(self)
 				ignoresMouseEvents = false
+
+				// Disable mouse tracking in browsing mode (native events are available)
+				mouseTracker.isEnabled = false
 			} else {
 				level = .desktop
 				orderBack(self)
 
 				// Even though the window is on `.desktop` level, the user would be able to interact if they hide desktop icons.
 				ignoresMouseEvents = true
+
+				// Re-enable mouse tracking if setting is on
+				mouseTracker.isEnabled = sendMouseEvents
 			}
 		}
 	}

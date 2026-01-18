@@ -6,14 +6,6 @@ extension AppState {
 			return
 		}
 
-		var url = website.url
-		do {
-			url = try replacePlaceholders(of: url) ?? url
-		} catch {
-			error.presentAsModal()
-			return
-		}
-
 		let maxLength = 30
 
 		if !website.menuTitle.isEmpty {
@@ -93,6 +85,7 @@ extension AppState {
 			// TODO: DRY this up with the one in SSWebView when everything is in SwiftUI.
 			if
 				let website = WebsitesController.shared.current,
+				let webViewController,
 				let url = webViewController.webView.url?.normalized(),
 				website.url.normalized() != url
 			{

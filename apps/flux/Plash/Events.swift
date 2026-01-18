@@ -7,24 +7,28 @@ extension AppState {
 			updateMenu()
 		}
 
-		webViewController.didLoadPublisher
-			.convertToResult()
-			.sink { [self] result in
-				switch result {
-				case .success:
-					// Set the persisted zoom level.
-					// This must be here as `webView.url` needs to have been set.
-					let zoomLevel = webViewController.webView.zoomLevelWrapper
-					if zoomLevel != 1 {
-						webViewController.webView.zoomLevelWrapper = zoomLevel
-					}
+		// Note: In multi-monitor mode, we listen to the first web view controller's events
+		// This is a simplification; ideally we'd track all web views
+		if let webViewController {
+			webViewController.didLoadPublisher
+				.convertToResult()
+				.sink { [self] result in
+					switch result {
+					case .success:
+						// Set the persisted zoom level.
+						// This must be here as `webView.url` needs to have been set.
+						let zoomLevel = webViewController.webView.zoomLevelWrapper
+						if zoomLevel != 1 {
+							webViewController.webView.zoomLevelWrapper = zoomLevel
+						}
 
-					statusItemButton.toolTip = WebsitesController.shared.current?.tooltip
-				case .failure(let error):
-					webViewError = error
+						statusItemButton.toolTip = WebsitesController.shared.current?.tooltip
+					case .failure(let error):
+						webViewError = error
+					}
 				}
-			}
-			.store(in: &cancellables)
+				.store(in: &cancellables)
+		}
 
 		powerSourceWatcher?.didChangePublisher
 			.sink { [self] _ in
@@ -77,7 +81,7 @@ extension AppState {
 
 		Defaults.publisher(.opacity)
 			.sink { [self] change in
-				desktopWindow.alphaValue = isBrowsingMode ? 1 : change.newValue
+				displayManager.setAlpha(isBrowsingMode ? 1 : change.newValue)
 			}
 			.store(in: &cancellables)
 
@@ -89,7 +93,10 @@ extension AppState {
 
 		Defaults.publisher(.display, options: [])
 			.sink { [self] change in
-				desktopWindow.targetDisplay = change.newValue
+				// Only update if not in multi-monitor mode
+				if !Defaults[.enableMultiMonitor], let display = change.newValue {
+					displayManager.updateDisplays(Set([display]))
+				}
 			}
 			.store(in: &cancellables)
 
@@ -101,13 +108,18 @@ extension AppState {
 
 		Defaults.publisher(.showOnAllSpaces)
 			.sink { [self] change in
-				desktopWindow.collectionBehavior.toggleExistence(.canJoinAllSpaces, shouldExist: change.newValue)
+				for window in displayManager.windows {
+					window.collectionBehavior.toggleExistence(.canJoinAllSpaces, shouldExist: change.newValue)
+				}
 			}
 			.store(in: &cancellables)
 
 		Defaults.publisher(.bringBrowsingModeToFront, options: [])
 			.sink { [self] _ in
-				desktopWindow.isInteractive = desktopWindow.isInteractive
+				// Trigger isInteractive update for all windows
+				for window in displayManager.windows {
+					window.isInteractive = window.isInteractive
+				}
 			}
 			.store(in: &cancellables)
 
@@ -115,6 +127,43 @@ extension AppState {
 			.receive(on: DispatchQueue.main)
 			.sink { [self] _ in
 				recreateWebViewAndReload()
+			}
+			.store(in: &cancellables)
+
+		// Multi-monitor support
+		Defaults.publisher(.enableMultiMonitor)
+			.sink { [self] change in
+				if change.newValue {
+					// Enable multi-monitor mode - show on all displays
+					displayManager.updateDisplays(Set(Display.all))
+				} else {
+					// Disable multi-monitor mode - revert to single display
+					let display = Defaults[.display] ?? .main
+					if let display {
+						displayManager.updateDisplays(Set([display]))
+					}
+				}
+				loadUserURL()
+			}
+			.store(in: &cancellables)
+
+		// Monitor screen changes (display connect/disconnect)
+		NSScreen.publisher
+			.debounce(for: .milliseconds(500), scheduler: DispatchQueue.main)
+			.sink { [self] in
+				if Defaults[.enableMultiMonitor] {
+					displayManager.updateDisplays(Set(Display.all))
+					loadUserURL()
+				}
+			}
+			.store(in: &cancellables)
+
+		// Mouse position tracking (will be wired up when MouseTracker is integrated)
+		Defaults.publisher(.sendMousePositionEvents)
+			.sink { [self] change in
+				for window in displayManager.windows {
+					window.sendMouseEvents = change.newValue
+				}
 			}
 			.store(in: &cancellables)
 

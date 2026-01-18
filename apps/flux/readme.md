@@ -32,10 +32,12 @@ Plash enables you to have a highly dynamic desktop wallpaper. You could display 
 ## Features
 
 - Show a remote or local website
-- Interact with the website (“Browsing Mode”)
+- Interact with the website ("Browsing Mode")
 - Automatically reload the website at a custom interval
 - Add multiple websites
 - Show the website on a different display
+- **Multi-monitor support** - Display different websites on each monitor simultaneously
+- **Mouse position events** - Send mouse movements to websites for interactive effects
 - Invert website colors (fake dark mode)
 - Add custom CSS and JavaScript to the website
 - Lower the opacity
@@ -113,6 +115,44 @@ You can use the “CSS” field in the website settings to adjust the padding of
 ### Detect Plash
 
 Plash injects a CSS class named `is-plash-app` on the `<html>` element. You could use this class to customize your website for Plash. For example, if your website has instructions on how to use it in Plash, you could hide those when it's running in Plash.
+
+### Multi-monitor support
+
+If you have multiple monitors connected, you can enable multi-monitor mode in Settings → General → "Enable multi-monitor mode". This allows you to display different websites on each monitor simultaneously.
+
+When multi-monitor mode is enabled, a new section will appear in the settings allowing you to assign a specific website to each display. Each monitor can show a different website from your websites list.
+
+### Mouse position events
+
+Plash can send mouse position data to your website even when not in browsing mode. This is useful for creating interactive effects like parallax scrolling or mouse-following elements.
+
+To enable this feature:
+1. Go to Settings → Advanced
+2. Enable "Send mouse position to website"
+
+Your website can then listen for mouse position events:
+
+```js
+// Listen for mouse movement events
+document.addEventListener('plashMouseMove', (event) => {
+    const { x, y, normalizedX, normalizedY } = event.detail;
+    console.log(`Mouse at: ${x}, ${y}`);
+
+    // Example: Simple parallax effect
+    document.body.style.transform = `translate(${normalizedX * 50}px, ${normalizedY * 50}px)`;
+});
+
+// Or access the global variable
+console.log(window.plashMouse);
+// { x: 123, y: 456, normalizedX: 0.5, normalizedY: 0.5, windowWidth: 1920, windowHeight: 1080 }
+```
+
+The event includes:
+- `x`, `y` - Absolute pixel coordinates (top-left origin)
+- `normalizedX`, `normalizedY` - Normalized coordinates (0-1 range)
+- `windowWidth`, `windowHeight` - Display dimensions
+
+**Note:** Mouse tracking adds a small amount of CPU overhead (~2-5%) and is automatically disabled when browsing mode is active.
 
 ## Screenshots
 

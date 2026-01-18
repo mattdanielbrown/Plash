@@ -31,8 +31,10 @@ private struct GeneralSettings: View {
 			}
 			Section {
 				DisplaySetting()
+				EnableMultiMonitorSetting()
 				ShowOnAllSpacesSetting()
 			}
+			MultiMonitorWebsitesSection()
 		}
 	}
 }
@@ -56,6 +58,7 @@ private struct AdvancedSettings: View {
 			Section {
 				BringBrowsingModeToFrontSetting()
 				Defaults.Toggle("Deactivate while on battery", key: .deactivateOnBattery)
+				SendMousePositionEventsSetting()
 				OpenExternalLinksInBrowserSetting()
 				HideMenuBarIconSetting()
 				Defaults.Toggle("Mute audio", key: .muteAudio)
@@ -223,11 +226,93 @@ private struct ClearWebsiteDataSetting: View {
 			Task {
 				hasCleared = true
 				WebsitesController.shared.thumbnailCache.removeAllImages()
-				await AppState.shared.webViewController.webView.clearWebsiteData()
+				await AppState.shared.webViewController?.webView.clearWebsiteData()
 			}
 		}
 		.help("Clears all cookies, local storage, caches, etc.")
 		.disabled(hasCleared)
+	}
+}
+
+private struct EnableMultiMonitorSetting: View {
+	@Default(.enableMultiMonitor) private var enableMultiMonitor
+	@ObservedObject private var displayWrapper = Display.observable
+
+	var body: some View {
+		if displayWrapper.wrappedValue.all.count > 1 {
+			Defaults.Toggle("Enable multi-monitor mode", key: .enableMultiMonitor)
+				.help("Display different websites on each connected monitor simultaneously.")
+		}
+	}
+}
+
+private struct MultiMonitorWebsitesSection: View {
+	@Default(.enableMultiMonitor) private var enableMultiMonitor
+	@ObservedObject private var displayWrapper = Display.observable
+
+	var body: some View {
+		if enableMultiMonitor && displayWrapper.wrappedValue.all.count > 1 {
+			Section("Multi-Monitor Websites") {
+				ForEach(displayWrapper.wrappedValue.all) { display in
+					DisplayWebsiteRow(display: display)
+				}
+			}
+		}
+	}
+}
+
+private struct DisplayWebsiteRow: View {
+	let display: Display
+	@ObservedObject private var websitesController = WebsitesController.shared
+	@Default(.websitesPerDisplay) private var websitesPerDisplay
+
+	var body: some View {
+		HStack {
+			Text(display.localizedName)
+				.frame(width: 120, alignment: .leading)
+			Spacer()
+			if websitesController.all.isEmpty {
+				Text("No websites")
+					.foregroundStyle(.secondary)
+			} else {
+				Picker("", selection: websiteBinding) {
+					Text("None").tag(nil as String?)
+					ForEach(websitesController.all) { website in
+						Text(website.menuTitle).tag(website.id.uuidString as String?)
+					}
+				}
+				.labelsHidden()
+			}
+		}
+	}
+
+	private var websiteBinding: Binding<String?> {
+		Binding(
+			get: { websitesPerDisplay[display.id.uuidString] },
+			set: { newValue in
+				var updated = websitesPerDisplay
+				if let newValue {
+					updated[display.id.uuidString] = newValue
+				} else {
+					updated.removeValue(forKey: display.id.uuidString)
+				}
+				websitesPerDisplay = updated
+			}
+		)
+	}
+}
+
+private struct SendMousePositionEventsSetting: View {
+	var body: some View {
+		Defaults.Toggle(
+			"Send mouse position to website",
+			key: .sendMousePositionEvents
+		)
+		.help("""
+			Track mouse position and send to website even when not in browsing mode. \
+			Useful for parallax effects and interactive backgrounds. \
+			Websites can listen to 'plashMouseMove' events or read window.plashMouse.
+			""")
 	}
 }
 

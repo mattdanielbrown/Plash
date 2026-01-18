@@ -30,6 +30,13 @@ extension Defaults.Keys {
 	static let muteAudio = Key<Bool>("muteAudio", default: true)
 
 	static let extendPlashBelowMenuBar = Key<Bool>("extendPlashBelowMenuBar", default: false)
+
+	// Multi-monitor settings
+	static let enableMultiMonitor = Key<Bool>("enableMultiMonitor", default: false)
+	static let websitesPerDisplay = Key<[String: String]>("websitesPerDisplay", default: [:])
+
+	// Mouse tracking
+	static let sendMousePositionEvents = Key<Bool>("sendMousePositionEvents", default: false)
 }
 
 extension KeyboardShortcuts.Name {

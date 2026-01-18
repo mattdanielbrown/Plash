@@ -19,11 +19,15 @@ final class AppState: ObservableObject {
 
 	private(set) lazy var statusItemButton = statusItem.button!
 
-	private(set) lazy var webViewController = WebViewController()
+	private(set) lazy var displayManager = DisplayManager()
 
-	private(set) lazy var desktopWindow = with(DesktopWindow(display: Defaults[.display])) {
-		$0.contentView = webViewController.webView
-		$0.contentView?.isHidden = true
+	// Backward compatibility: single display mode
+	private var desktopWindow: DesktopWindow? {
+		displayManager.contextOrMain()?.window
+	}
+
+	var webViewController: WebViewController? {
+		displayManager.contextOrMain()?.webViewController
 	}
 
 	var isBrowsingMode = false {
@@ -32,8 +36,8 @@ final class AppState: ObservableObject {
 				return
 			}
 
-			desktopWindow.isInteractive = isBrowsingMode
-			desktopWindow.alphaValue = isBrowsingMode ? 1 : Defaults[.opacity]
+			displayManager.setInteractive(isBrowsingMode)
+			displayManager.setAlpha(isBrowsingMode ? 1 : Defaults[.opacity])
 			resetTimer()
 		}
 	}
@@ -45,10 +49,10 @@ final class AppState: ObservableObject {
 
 			if isEnabled {
 				loadUserURL()
-				desktopWindow.makeKeyAndOrderFront(self)
+				displayManager.showAllWindows()
 			} else {
 				// TODO: Properly unload the web view instead of just clearing and hiding it.
-				desktopWindow.orderOut(self)
+				displayManager.hideAllWindows()
 				loadURL("about:blank")
 			}
 		}
@@ -95,7 +99,7 @@ final class AppState: ObservableObject {
 
 	private func didLaunch() {
 		_ = statusItemButton
-		_ = desktopWindow
+		initializeDisplays()
 		setUpEvents()
 		showWelcomeScreenIfNeeded()
 
@@ -103,6 +107,18 @@ final class AppState: ObservableObject {
 //		SSApp.showSettingsWindow()
 //		Constants.openWebsitesWindow()
 		#endif
+	}
+
+	private func initializeDisplays() {
+		if Defaults[.enableMultiMonitor] {
+			displayManager.updateDisplays(Set(Display.all))
+		} else {
+			// Single display mode
+			let display = Defaults[.display] ?? .main
+			if let display {
+				displayManager.updateDisplays(Set([display]))
+			}
+		}
 	}
 
 	func handleMenuBarIcon() {
@@ -145,8 +161,7 @@ final class AppState: ObservableObject {
 	}
 
 	func recreateWebView() {
-		webViewController.recreateWebView()
-		desktopWindow.contentView = webViewController.webView
+		displayManager.recreateAllWebViews()
 	}
 
 	func recreateWebViewAndReload() {
@@ -173,40 +188,29 @@ final class AppState: ObservableObject {
 		webViewError = nil
 
 		guard
-			var url,
+			let url,
 			url.isValid
 		else {
 			return
 		}
 
-		do {
-			url = try replacePlaceholders(of: url) ?? url
-		} catch {
-			error.presentAsModal()
-			return
+		// In multi-monitor mode, load the appropriate website for each display
+		// In single-monitor mode, load the URL to all displays (which should be just one)
+		if Defaults[.enableMultiMonitor] {
+			// Load per-display websites
+			for context in displayManager.allContexts {
+				let displayId = context.display.id.uuidString
+				if let websiteId = Defaults[.websitesPerDisplay][displayId],
+				   let website = WebsitesController.shared.all.first(where: { $0.id.uuidString == websiteId }) {
+					displayManager.setWebsite(website, for: context.display.id)
+				} else {
+					// Load the current website as fallback
+					displayManager.setWebsite(WebsitesController.shared.current, for: context.display.id)
+				}
+			}
+		} else {
+			// Single display mode - load to all contexts
+			displayManager.loadURLInAllContexts(url)
 		}
-
-		webViewController.loadURL(url)
-
-		// TODO: Add a callback to `loadURL` when it's done loading instead.
-		// TODO: Fade in the web view.
-		delay(.seconds(1)) { [self] in
-			desktopWindow.contentView?.isHidden = false
-		}
-	}
-
-	/**
-	Replaces app-specific placeholder strings in the given URL with a corresponding value.
-	*/
-	func replacePlaceholders(of url: URL) throws -> URL? {
-		// Here we swap out `[[screenWidth]]` and `[[screenHeight]]` for their actual values.
-		// We proceed only if we have an `NSScreen` to work with.
-		guard let screen = desktopWindow.targetDisplay?.screen ?? .main else {
-			return nil
-		}
-
-		return try url
-			.replacingPlaceholder("[[screenWidth]]", with: String(format: "%.0f", screen.frameWithoutStatusBar.width))
-			.replacingPlaceholder("[[screenHeight]]", with: String(format: "%.0f", screen.frameWithoutStatusBar.height))
 	}
 }

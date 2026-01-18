@@ -15,8 +15,6 @@
 			</array>
 		</dict>
 	</array>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
 	<key>MDItemKeywords</key>
 	<string>desktop,background,wallpaper,website</string>
 	<key>NSAppTransportSecurity</key>
