@@ -41,11 +41,6 @@ final class DisplayManager {
 	Update the displays being managed. Creates windows for new displays, removes windows for removed displays.
 	*/
 	func updateDisplays(_ displays: Set<Display>) {
-		NSLog("DisplayManager.updateDisplays(): Called with \(displays.count) displays")
-		for (index, display) in displays.enumerated() {
-			NSLog("  Display \(index): id=\(display.id.uuidString), name=\(display.localizedName), screen frame=\(display.screen?.frame ?? .zero)")
-		}
-
 		let currentDisplayIds = Set(contexts.keys)
 		let newDisplayIds = Set(displays.map(\.id))
 
@@ -309,14 +304,11 @@ final class DisplayManager {
 	Create a window for a display.
 	*/
 	private func createWindow(for display: Display) {
-		NSLog("DisplayManager.createWindow(): Creating window for display \(display.id.uuidString), name=\(display.localizedName)")
 		let window = DesktopWindow(display: display)
 		let webViewController = WebViewController()
 
 		window.contentView = webViewController.webView
 		window.contentView?.isHidden = true
-
-		NSLog("DisplayManager.createWindow(): Window created with frame: \(window.frame)")
 
 		// Wire up mouse tracker callback with display arrangement info
 		window.mouseTracker.onMouseMove = { [weak webViewController, weak self] position, size in

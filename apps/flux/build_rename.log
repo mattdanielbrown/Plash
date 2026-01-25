@@ -1,0 +1,104 @@
+Command line invocation:
+    /Users/stoked/Downloads/Xcode.app/Contents/Developer/usr/bin/xcodebuild -scheme Flux -project Flux.xcodeproj -configuration Debug build CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+
+Build settings from command line:
+    CODE_SIGN_IDENTITY = 
+    CODE_SIGNING_ALLOWED = NO
+    CODE_SIGNING_REQUIRED = NO
+
+2026-01-21 06:51:27.575 xcodebuild[71584:17108174] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+Resolve Package Graph
+2026-01-21 06:51:27.678 xcodebuild[71584:17108174] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+
+
+Resolved source packages:
+  Defaults: https://github.com/sindresorhus/Defaults @ 9.0.3
+  swift-syntax: https://github.com/swiftlang/swift-syntax @ 601.0.1
+  KeyboardShortcuts: https://github.com/sindresorhus/KeyboardShortcuts @ 2.3.0
+  Sentry: https://github.com/getsentry/sentry-cocoa @ 8.49.1
+  LaunchAtLogin: https://github.com/sindresorhus/LaunchAtLogin-Modern @ 1.1.0
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:macOS, arch:arm64, id:00006040-000450D40187801C, name:My Mac }
+{ platform:macOS, arch:x86_64, id:00006040-000450D40187801C, name:My Mac }
+{ platform:macOS, name:Any Mac }
+note: Using codesigning identity override: 
+2026-01-21 06:51:28.239 xcodebuild[71584:17108174] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (11 targets)
+    Target 'Flux' in project 'Flux'
+        ➜ Explicit dependency on target 'Share Extension' in project 'Flux'
+        ➜ Explicit dependency on target 'Defaults' in project 'Defaults'
+        ➜ Explicit dependency on target 'KeyboardShortcuts' in project 'KeyboardShortcuts'
+        ➜ Explicit dependency on target 'LaunchAtLogin' in project 'LaunchAtLogin'
+        ➜ Explicit dependency on target 'Sentry' in project 'Sentry'
+    Target 'Sentry' in project 'Sentry' (no dependencies)
+    Target 'LaunchAtLogin' in project 'LaunchAtLogin'
+        ➜ Explicit dependency on target 'LaunchAtLogin' in project 'LaunchAtLogin'
+    Target 'LaunchAtLogin' in project 'LaunchAtLogin' (no dependencies)
+    Target 'KeyboardShortcuts' in project 'KeyboardShortcuts'
+        ➜ Explicit dependency on target 'KeyboardShortcuts' in project 'KeyboardShortcuts'
+        ➜ Explicit dependency on target 'KeyboardShortcuts_KeyboardShortcuts' in project 'KeyboardShortcuts'
+    Target 'KeyboardShortcuts' in project 'KeyboardShortcuts'
+        ➜ Explicit dependency on target 'KeyboardShortcuts_KeyboardShortcuts' in project 'KeyboardShortcuts'
+    Target 'KeyboardShortcuts_KeyboardShortcuts' in project 'KeyboardShortcuts' (no dependencies)
+    Target 'Defaults' in project 'Defaults'
+        ➜ Explicit dependency on target 'Defaults' in project 'Defaults'
+        ➜ Explicit dependency on target 'Defaults_Defaults' in project 'Defaults'
+    Target 'Defaults' in project 'Defaults'
+        ➜ Explicit dependency on target 'Defaults_Defaults' in project 'Defaults'
+    Target 'Defaults_Defaults' in project 'Defaults' (no dependencies)
+    Target 'Share Extension' in project 'Flux' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ClangStatCache /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Users/stoked/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk /Users/stoked/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx26.1-25B74-e1601fd6fcd42ed763a5f90fd2ff5cfa.sdkstatcache
+    cd /Users/stoked/work/flux/apps/flux/Flux.xcodeproj
+    /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Users/stoked/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk -o /Users/stoked/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx26.1-25B74-e1601fd6fcd42ed763a5f90fd2ff5cfa.sdkstatcache
+
+note: Run script build phase 'SwiftLint' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Flux' from project 'Flux')
+PhaseScriptExecution SwiftLint /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build/Script-E324214B2384EE8E00D28A91.sh (in target 'Flux' from project 'Flux')
+    cd /Users/stoked/work/flux/apps/flux
+    /bin/sh -c /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build/Script-E324214B2384EE8E00D28A91.sh
+
+ValidateDevelopmentAssets /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build (in target 'Flux' from project 'Flux')
+    cd /Users/stoked/work/flux/apps/flux
+    builtin-validate-development-assets --validate YES_ERROR /Users/stoked/work/flux/apps/flux/Plash/Preview\ Content
+/Users/stoked/work/flux/apps/flux/Flux.xcodeproj: error: One of the paths in DEVELOPMENT_ASSET_PATHS does not exist: /Users/stoked/work/flux/apps/flux/Plash/Preview Content (in target 'Flux' from project 'Flux')
+
+Copy /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Flux.app/Contents/Resources/Defaults_Defaults.bundle /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Defaults_Defaults.bundle (in target 'Flux' from project 'Flux')
+    cd /Users/stoked/work/flux/apps/flux
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Defaults_Defaults.bundle /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Flux.app/Contents/Resources
+
+Copy /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Flux.app/Contents/Resources/KeyboardShortcuts_KeyboardShortcuts.bundle /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/KeyboardShortcuts_KeyboardShortcuts.bundle (in target 'Flux' from project 'Flux')
+    cd /Users/stoked/work/flux/apps/flux
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/KeyboardShortcuts_KeyboardShortcuts.bundle /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Flux.app/Contents/Resources
+
+Copy /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Flux.app/Contents/Frameworks/Sentry.framework /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/SourcePackages/artifacts/sentry-cocoa/Sentry/Sentry.xcframework/macos-arm64_arm64e_x86_64/Sentry.framework (in target 'Flux' from project 'Flux')
+    cd /Users/stoked/work/flux/apps/flux
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks -remove-static-executable /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/SourcePackages/artifacts/sentry-cocoa/Sentry/Sentry.xcframework/macos-arm64_arm64e_x86_64/Sentry.framework /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Flux.app/Contents/Frameworks
+note: Injecting stub binary into codeless framework (in target 'Flux' from project 'Flux')
+    /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Users/stoked/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk -x c -c /dev/null -target arm64-apple-macos10.13 -o /private/var/folders/53/dd576_xj6gq_qtjqyblf1xjw0000gn/T/swbuild.tmp.Edm6ISY2/Data.noindex/arm64-apple.o
+    /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Users/stoked/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk -dynamiclib -Xlinker -adhoc_codesign -target arm64-apple-macos10.13 -o /private/var/folders/53/dd576_xj6gq_qtjqyblf1xjw0000gn/T/swbuild.tmp.Edm6ISY2/Data.noindex/arm64-apple /private/var/folders/53/dd576_xj6gq_qtjqyblf1xjw0000gn/T/swbuild.tmp.Edm6ISY2/Data.noindex/arm64-apple.o
+    /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo -create -output /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Flux.app/Contents/Frameworks/Sentry.framework/Versions/A/Sentry /private/var/folders/53/dd576_xj6gq_qtjqyblf1xjw0000gn/T/swbuild.tmp.Edm6ISY2/Data.noindex/arm64-apple
+
+** BUILD FAILED **
+
+
+The following build commands failed:
+	ValidateDevelopmentAssets /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build (in target 'Flux' from project 'Flux')
+	Building project Flux with scheme Flux and configuration Debug
+(2 failures)

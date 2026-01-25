@@ -251,11 +251,6 @@ final class MouseTracker {
 
 		let position = CGPoint(x: normalizedX, y: normalizedY)
 
-		if enableDebugLogging {
-			print("MouseTracker [CGEvent]: mouseLocation=\(mouseLocation), windowFrame=\(windowFrame)")
-			print("  x=\(x), y=\(y), normalizedX=\(normalizedX), normalizedY=\(normalizedY)")
-		}
-
 		// Only send update if position changed
 		if position != lastPosition {
 			lastPosition = position

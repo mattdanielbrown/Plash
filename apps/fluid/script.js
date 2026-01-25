@@ -1982,7 +1982,6 @@ document.addEventListener('plashMouseMove', e => {
         debugInfo.fluidX = texcoordX;
         debugInfo.fluidY = texcoordY;
     } else {
-        console.log('Normalized coords not available, using fallback');
         // Fallback to local coordinates if normalized values aren't available
         texcoordX = localX / canvas.width;
         texcoordY = 1.0 - (localY / canvas.height); // Flip Y for fluid simulation

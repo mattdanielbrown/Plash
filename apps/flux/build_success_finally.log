@@ -1,0 +1,358 @@
+Command line invocation:
+    /Users/stoked/Downloads/Xcode.app/Contents/Developer/usr/bin/xcodebuild -scheme Plash -project Plash.xcodeproj -configuration Debug build CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+
+Build settings from command line:
+    CODE_SIGN_IDENTITY = 
+    CODE_SIGNING_ALLOWED = NO
+    CODE_SIGNING_REQUIRED = NO
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  swift-syntax: https://github.com/swiftlang/swift-syntax @ 601.0.1
+  LaunchAtLogin: https://github.com/sindresorhus/LaunchAtLogin-Modern @ 1.1.0
+  Sentry: https://github.com/getsentry/sentry-cocoa @ 8.49.1
+  Defaults: https://github.com/sindresorhus/Defaults @ 9.0.3
+  KeyboardShortcuts: https://github.com/sindresorhus/KeyboardShortcuts @ 2.3.0
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:macOS, arch:arm64, id:00006040-000450D40187801C, name:My Mac }
+{ platform:macOS, arch:x86_64, id:00006040-000450D40187801C, name:My Mac }
+{ platform:macOS, name:Any Mac }
+note: Using codesigning identity override: 
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (11 targets)
+    Target 'Plash' in project 'Plash'
+        ➜ Explicit dependency on target 'Share Extension' in project 'Plash'
+        ➜ Explicit dependency on target 'Defaults' in project 'Defaults'
+        ➜ Explicit dependency on target 'KeyboardShortcuts' in project 'KeyboardShortcuts'
+        ➜ Explicit dependency on target 'LaunchAtLogin' in project 'LaunchAtLogin'
+        ➜ Explicit dependency on target 'Sentry' in project 'Sentry'
+    Target 'Sentry' in project 'Sentry' (no dependencies)
+    Target 'LaunchAtLogin' in project 'LaunchAtLogin'
+        ➜ Explicit dependency on target 'LaunchAtLogin' in project 'LaunchAtLogin'
+    Target 'LaunchAtLogin' in project 'LaunchAtLogin' (no dependencies)
+    Target 'KeyboardShortcuts' in project 'KeyboardShortcuts'
+        ➜ Explicit dependency on target 'KeyboardShortcuts' in project 'KeyboardShortcuts'
+        ➜ Explicit dependency on target 'KeyboardShortcuts_KeyboardShortcuts' in project 'KeyboardShortcuts'
+    Target 'KeyboardShortcuts' in project 'KeyboardShortcuts'
+        ➜ Explicit dependency on target 'KeyboardShortcuts_KeyboardShortcuts' in project 'KeyboardShortcuts'
+    Target 'KeyboardShortcuts_KeyboardShortcuts' in project 'KeyboardShortcuts' (no dependencies)
+    Target 'Defaults' in project 'Defaults'
+        ➜ Explicit dependency on target 'Defaults' in project 'Defaults'
+        ➜ Explicit dependency on target 'Defaults_Defaults' in project 'Defaults'
+    Target 'Defaults' in project 'Defaults'
+        ➜ Explicit dependency on target 'Defaults_Defaults' in project 'Defaults'
+    Target 'Defaults_Defaults' in project 'Defaults' (no dependencies)
+    Target 'Share Extension' in project 'Plash' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ClangStatCache /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Users/stoked/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk /Users/stoked/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx26.1-25B74-e1601fd6fcd42ed763a5f90fd2ff5cfa.sdkstatcache
+    cd /Users/stoked/work/flux/apps/flux/Plash.xcodeproj
+    /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Users/stoked/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk -o /Users/stoked/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx26.1-25B74-e1601fd6fcd42ed763a5f90fd2ff5cfa.sdkstatcache
+
+note: Run script build phase 'SwiftLint' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Plash' from project 'Plash')
+PhaseScriptExecution SwiftLint /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Script-E324214B2384EE8E00D28A91.sh (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    /bin/sh -c /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Script-E324214B2384EE8E00D28A91.sh
+warning: 'redundant_optional_initialization' has been renamed to 'implicit_optional_initialization' and will be completely removed in a future release.
+warning: 'operator_whitespace' has been renamed to 'function_name_whitespace' and will be completely removed in a future release.
+Linting Swift files in current working directory
+Linting 'ShareController.swift' (1/21)
+Linting 'Constants.swift' (2/21)
+Linting 'AppState.swift' (3/21)
+Linting 'ShareExtension/Utilities.swift' (4/21)
+Linting 'SettingsScreen.swift' (5/21)
+Linting 'WebsitesController.swift' (6/21)
+Linting 'Plash/Utilities.swift' (7/21)
+Linting 'DisplayManager.swift' (8/21)
+Linting 'Website.swift' (9/21)
+Linting 'Intents.swift' (11/21)
+Linting 'MouseTracker.swift' (12/21)
+Linting 'Menus.swift' (10/21)
+Linting 'DesktopWindow.swift' (13/21)
+Linting 'SSWebView.swift' (14/21)
+Linting 'AddWebsiteScreen.swift' (16/21)
+Linting 'WebsitesScreen.swift' (15/21)
+Linting 'WelcomeScreen.swift' (17/21)
+/Users/stoked/work/flux/apps/flux/Plash/Utilities.swift:1641:21: warning: Modifier Order Violation: nonisolated modifier should come before static (modifier_order)
+Linting 'Events.swift' (18/21)
+Linting 'WebViewController.swift' (19/21)
+Linting 'URLCommands.swift' (20/21)
+Linting 'App.swift' (21/21)
+/Users/stoked/work/flux/apps/flux/Plash/DesktopWindow.swift:12:21: warning: Redundant Type Annotation Violation: Variables should not have redundant type annotation (redundant_type_annotation)
+/Users/stoked/work/flux/apps/flux/Plash/MouseTracker.swift:11:26: warning: Redundant Type Annotation Violation: Variables should not have redundant type annotation (redundant_type_annotation)
+/Users/stoked/work/flux/apps/flux/Plash/DisplayManager.swift:128:25: warning: no_cgfloat Violation: Use Double instead of CGFloat (no_cgfloat)
+Done linting! Found 4 violations, 0 serious in 21 files.
+
+SwiftDriver Plash normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    builtin-SwiftDriver -- /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Plash -Onone -enforce-exclusivity\=checked @/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Users/stoked/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk -target arm64-apple-macos15.2 -g -module-cache-path /Users/stoked/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug -F /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -F /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -F /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -F /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug -emit-localized-strings -emit-localized-strings-path /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64 -c -j14 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/stoked/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx26.1-25B74-e1601fd6fcd42ed763a5f90fd2ff5cfa.sdkstatcache -output-file-map /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/stoked/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/stoked/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/stoked/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash_const_extract_protocols.json -Xcc -iquote -Xcc /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-generated-files.hmap -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-own-target-headers.hmap -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash-8bb3329e67b8d20ade2a6281752a0a02-VFS/all-product-headers.yaml -Xcc -iquote -Xcc /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-project-headers.hmap -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/include -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/DerivedSources-normal/arm64 -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/DerivedSources/arm64 -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash-Swift.h -working-directory /Users/stoked/work/flux/apps/flux -experimental-emit-module-separately -disable-cmo
+
+SwiftCompile normal arm64 Compiling\ AddWebsiteScreen.swift /Users/stoked/work/flux/apps/flux/Plash/AddWebsiteScreen.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/AddWebsiteScreen.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftCompile normal arm64 Compiling\ DisplayManager.swift /Users/stoked/work/flux/apps/flux/Plash/DisplayManager.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/DisplayManager.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftCompile normal arm64 Compiling\ MouseTracker.swift /Users/stoked/work/flux/apps/flux/Plash/MouseTracker.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/MouseTracker.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftCompile normal arm64 Compiling\ URLCommands.swift /Users/stoked/work/flux/apps/flux/Plash/URLCommands.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/URLCommands.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftCompile normal arm64 Compiling\ WelcomeScreen.swift /Users/stoked/work/flux/apps/flux/Plash/WelcomeScreen.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/WelcomeScreen.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftCompile normal arm64 Compiling\ Events.swift /Users/stoked/work/flux/apps/flux/Plash/Events.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/Events.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftCompile normal arm64 Compiling\ Utilities.swift /Users/stoked/work/flux/apps/flux/Plash/Utilities.swift (in target 'Plash' from project 'Plash')
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/Utilities.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+/Users/stoked/work/flux/apps/flux/Plash/Utilities.swift:21:44: warning: conformance of 'NSImage' to protocol 'Sendable' was already stated in the type's module 'AppKit'
+extension NSImage: @retroactive @unchecked Sendable {}
+                                           ^
+AppKit.NSImage:2:11: note: 'NSImage' declares conformance to protocol 'Sendable' here
+extension NSImage : Transferable {
+          ^
+
+SwiftCompile normal arm64 Compiling\ DesktopWindow.swift /Users/stoked/work/flux/apps/flux/Plash/DesktopWindow.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/DesktopWindow.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftCompile normal arm64 Compiling\ WebViewController.swift /Users/stoked/work/flux/apps/flux/Plash/WebViewController.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/WebViewController.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ Plash (in target 'Plash' from project 'Plash')
+
+EmitSwiftModule normal arm64 (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+/Users/stoked/work/flux/apps/flux/Plash/Utilities.swift:21:44: warning: conformance of 'NSImage' to protocol 'Sendable' was already stated in the type's module 'AppKit'
+extension NSImage: @retroactive @unchecked Sendable {}
+                                           ^
+AppKit.NSImage:2:11: note: 'NSImage' declares conformance to protocol 'Sendable' here
+extension NSImage : Transferable {
+          ^
+
+SwiftCompile normal arm64 Compiling\ Menus.swift /Users/stoked/work/flux/apps/flux/Plash/Menus.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/Menus.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftDriverJobDiscovery normal arm64 Compiling MouseTracker.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriverJobDiscovery normal arm64 Compiling WelcomeScreen.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriverJobDiscovery normal arm64 Compiling URLCommands.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 Compiling\ AppState.swift /Users/stoked/work/flux/apps/flux/Plash/AppState.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/AppState.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftCompile normal arm64 Compiling\ Intents.swift /Users/stoked/work/flux/apps/flux/Plash/Intents.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/Intents.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftCompile normal arm64 Compiling\ SSWebView.swift /Users/stoked/work/flux/apps/flux/Plash/SSWebView.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/SSWebView.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftCompile normal arm64 Compiling\ App.swift /Users/stoked/work/flux/apps/flux/Plash/App.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/App.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftCompile normal arm64 Compiling\ SettingsScreen.swift /Users/stoked/work/flux/apps/flux/Plash/SettingsScreen.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/SettingsScreen.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftDriverJobDiscovery normal arm64 Compiling DesktopWindow.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriverJobDiscovery normal arm64 Compiling DisplayManager.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriverJobDiscovery normal arm64 Compiling Menus.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriverJobDiscovery normal arm64 Compiling Events.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriverJobDiscovery normal arm64 Compiling App.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriverJobDiscovery normal arm64 Compiling WebViewController.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriverJobDiscovery normal arm64 Compiling AddWebsiteScreen.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 Compiling\ WebsitesScreen.swift /Users/stoked/work/flux/apps/flux/Plash/WebsitesScreen.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/WebsitesScreen.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftDriverJobDiscovery normal arm64 Compiling AppState.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriverJobDiscovery normal arm64 Compiling SSWebView.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriverJobDiscovery normal arm64 Compiling Intents.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriverJobDiscovery normal arm64 Compiling SettingsScreen.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for Plash (in target 'Plash' from project 'Plash')
+
+SwiftDriver\ Compilation\ Requirements Plash normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    builtin-Swift-Compilation-Requirements -- /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Plash -Onone -enforce-exclusivity\=checked @/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Users/stoked/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk -target arm64-apple-macos15.2 -g -module-cache-path /Users/stoked/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug -F /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -F /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -F /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -F /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug -emit-localized-strings -emit-localized-strings-path /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64 -c -j14 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/stoked/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx26.1-25B74-e1601fd6fcd42ed763a5f90fd2ff5cfa.sdkstatcache -output-file-map /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/stoked/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/stoked/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/stoked/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash_const_extract_protocols.json -Xcc -iquote -Xcc /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-generated-files.hmap -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-own-target-headers.hmap -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash-8bb3329e67b8d20ade2a6281752a0a02-VFS/all-product-headers.yaml -Xcc -iquote -Xcc /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-project-headers.hmap -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/include -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/DerivedSources-normal/arm64 -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/DerivedSources/arm64 -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash-Swift.h -working-directory /Users/stoked/work/flux/apps/flux -experimental-emit-module-separately -disable-cmo
+
+Copy /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.swiftmodule/arm64-apple-macos.abi.json /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash.abi.json (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash.abi.json /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.swiftmodule/arm64-apple-macos.abi.json
+
+Copy /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.swiftmodule/arm64-apple-macos.swiftmodule /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash.swiftmodule (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash.swiftmodule /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.swiftmodule/arm64-apple-macos.swiftmodule
+
+Copy /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.swiftmodule/Project/arm64-apple-macos.swiftsourceinfo /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash.swiftsourceinfo (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash.swiftsourceinfo /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.swiftmodule/Project/arm64-apple-macos.swiftsourceinfo
+
+SwiftDriverJobDiscovery normal arm64 Compiling WebsitesScreen.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriverJobDiscovery normal arm64 Compiling Utilities.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 Compiling\ GeneratedAssetSymbols.swift /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/DerivedSources/GeneratedAssetSymbols.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftCompile normal arm64 Compiling\ WebsitesController.swift /Users/stoked/work/flux/apps/flux/Plash/WebsitesController.swift (in target 'Plash' from project 'Plash')
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/WebsitesController.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftCompile normal arm64 Compiling\ Website.swift /Users/stoked/work/flux/apps/flux/Plash/Website.swift (in target 'Plash' from project 'Plash')
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/Website.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftCompile normal arm64 Compiling\ Constants.swift /Users/stoked/work/flux/apps/flux/Plash/Constants.swift (in target 'Plash' from project 'Plash')
+
+SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Plash/Constants.swift (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    
+
+SwiftDriverJobDiscovery normal arm64 Compiling GeneratedAssetSymbols.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriverJobDiscovery normal arm64 Compiling Constants.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriverJobDiscovery normal arm64 Compiling WebsitesController.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriverJobDiscovery normal arm64 Compiling Website.swift (in target 'Plash' from project 'Plash')
+
+SwiftDriver\ Compilation Plash normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    builtin-Swift-Compilation -- /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Plash -Onone -enforce-exclusivity\=checked @/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Users/stoked/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk -target arm64-apple-macos15.2 -g -module-cache-path /Users/stoked/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug -F /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -F /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -F /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -F /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug -emit-localized-strings -emit-localized-strings-path /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64 -c -j14 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/stoked/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/macosx26.1-25B74-e1601fd6fcd42ed763a5f90fd2ff5cfa.sdkstatcache -output-file-map /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/stoked/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/stoked/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/stoked/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash_const_extract_protocols.json -Xcc -iquote -Xcc /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-generated-files.hmap -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-own-target-headers.hmap -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash-8bb3329e67b8d20ade2a6281752a0a02-VFS/all-product-headers.yaml -Xcc -iquote -Xcc /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-project-headers.hmap -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/include -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/DerivedSources-normal/arm64 -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/DerivedSources/arm64 -Xcc -I/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash-Swift.h -working-directory /Users/stoked/work/flux/apps/flux -experimental-emit-module-separately -disable-cmo
+
+Ld /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/MacOS/Plash.debug.dylib normal (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-macos15.2 -dynamiclib -isysroot /Users/stoked/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk -O0 -L/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/EagerLinkingTBDs/Debug -L/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug -F/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/EagerLinkingTBDs/Debug -F/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -F/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -F/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -F/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug -filelist /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash.LinkFileList -install_name @rpath/Plash.debug.dylib -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -Xlinker -rpath -Xlinker @executable_path/../Frameworks -dead_strip -Xlinker -object_path_lto -Xlinker /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -dependency_info -Xlinker /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash_dependency_info.dat -fobjc-link-runtime -L/Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash.swiftmodule @/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash-linker-args.resp -Wl,-no_warn_duplicate_libraries -Wl,-no_warn_duplicate_libraries -Wl,-no_warn_duplicate_libraries -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -framework Sentry -o /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/MacOS/Plash.debug.dylib -Xlinker -add_ast_path -Xlinker /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Defaults.build/Debug/Defaults.build/Objects-normal/arm64/Defaults.swiftmodule @/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Defaults.build/Debug/Defaults.build/Objects-normal/arm64/Defaults-linker-args.resp -Xlinker -add_ast_path -Xlinker /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/KeyboardShortcuts.build/Debug/KeyboardShortcuts.build/Objects-normal/arm64/KeyboardShortcuts.swiftmodule @/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/KeyboardShortcuts.build/Debug/KeyboardShortcuts.build/Objects-normal/arm64/KeyboardShortcuts-linker-args.resp -Xlinker -add_ast_path -Xlinker /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/LaunchAtLogin.build/Debug/LaunchAtLogin.build/Objects-normal/arm64/LaunchAtLogin.swiftmodule @/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/LaunchAtLogin.build/Debug/LaunchAtLogin.build/Objects-normal/arm64/LaunchAtLogin-linker-args.resp
+
+ConstructStubExecutorLinkFileList /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-ExecutorLinkFileList-normal-arm64.txt (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    construct-stub-executor-link-file-list /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/MacOS/Plash.debug.dylib /Users/stoked/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/libPreviewsJITStubExecutor_no_swift_entry_point.a /Users/stoked/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/libPreviewsJITStubExecutor.a --output /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-ExecutorLinkFileList-normal-arm64.txt
+note: Using stub executor library with Swift entry point. (in target 'Plash' from project 'Plash')
+
+Ld /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/MacOS/Plash normal (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-macos15.2 -isysroot /Users/stoked/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk -O0 -L/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug -F/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -F/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -F/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -F/Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/PackageFrameworks -Xlinker -rpath -Xlinker @executable_path/../Frameworks -rdynamic -Xlinker -no_deduplicate -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-DebugDylibPath-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-DebugDylibInstallName-normal-arm64.txt -Xlinker -filelist -Xlinker /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash-ExecutorLinkFileList-normal-arm64.txt /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/MacOS/Plash.debug.dylib -o /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/MacOS/Plash
+
+Copy /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/PlugIns/Share\ Extension.appex /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Share\ Extension.appex (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -exclude Headers -exclude PrivateHeaders -exclude Modules -exclude \*.tbd -resolve-src-symlinks -remove-static-executable /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Share\ Extension.appex /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/PlugIns
+
+ProcessInfoPlistFile /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/Info.plist /Users/stoked/work/flux/apps/flux/Plash/Info.plist (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    builtin-infoPlistUtility /Users/stoked/work/flux/apps/flux/Plash/Info.plist -producttype com.apple.product-type.application -genpkginfo /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/PkgInfo -expandbuildsettings -platform macosx -additionalcontentfile /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/assetcatalog_generated_info.plist -scanforprivacyfile /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/Frameworks/Sentry.framework -scanforprivacyfile /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/PlugIns/Share\ Extension.appex -scanforprivacyfile /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/Resources/Defaults_Defaults.bundle -scanforprivacyfile /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/Resources/KeyboardShortcuts_KeyboardShortcuts.bundle -o /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/Info.plist
+
+CopySwiftLibs /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/MacOS/Plash.debug.dylib --scan-folder /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/Frameworks --scan-folder /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/PlugIns --scan-folder /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/Library/SystemExtensions --scan-folder /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/Extensions --platform macosx --toolchain /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/Frameworks --strip-bitcode --strip-bitcode-tool /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os --back-deploy-swift-span
+Ignoring --strip-bitcode because --sign was not passed
+
+ExtractAppIntentsMetadata (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name Plash --sdk-root /Users/stoked/Downloads/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.1.sdk --xcode-version 17B55 --platform-family macOS --deployment-target 15.2 --bundle-identifier com.sindresorhus.Plash --output /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/Resources --target-triple arm64-apple-macos15.2 --binary-file /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/MacOS/Plash --dependency-file /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash_dependency_info.dat --stringsdata-file /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash.SwiftFileList --metadata-file-list /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash.DependencyMetadataFileList --static-metadata-file-list /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Plash.DependencyStaticMetadataFileList --swift-const-vals-list /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Intermediates.noindex/Plash.build/Debug/Plash.build/Objects-normal/arm64/Plash.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-01-18 04:49:14.553 appintentsmetadataprocessor[7510:2737383] Starting appintentsmetadataprocessor export
+2026-01-18 04:49:14.640 appintentsmetadataprocessor[7510:2737383] Writing Metadata.appintents
+2026-01-18 04:49:14.641 appintentsmetadataprocessor[7510:2737383] Metadata root: /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/Resources/Metadata.appintents
+
+ValidateEmbeddedBinary /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/PlugIns/Share\ Extension.appex (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    /Users/stoked/Downloads/Xcode.app/Contents/Developer/usr/bin/embeddedBinaryValidationUtility /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/PlugIns/Share\ Extension.appex -info-plist-path /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app/Contents/Info.plist
+
+RegisterExecutionPolicyException /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    builtin-RegisterExecutionPolicyException /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app
+
+Validate /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    builtin-validationUtility /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app -no-validate-extension -infoplist-subpath Contents/Info.plist
+
+Touch /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    /usr/bin/touch -c /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app
+
+RegisterWithLaunchServices /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app (in target 'Plash' from project 'Plash')
+    cd /Users/stoked/work/flux/apps/flux
+    /System/Library/Frameworks/CoreServices.framework/Versions/Current/Frameworks/LaunchServices.framework/Versions/Current/Support/lsregister -f -R -trusted /Users/stoked/Library/Developer/Xcode/DerivedData/Plash-cngvxipffdtddehayziolqyjgntj/Build/Products/Debug/Plash.app
+
+** BUILD SUCCEEDED **
+

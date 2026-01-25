@@ -105,16 +105,7 @@ final class DesktopWindow: NSWindow {
 			frame = screen.frame
 		}
 
-		NSLog("DesktopWindow.setFrame(): Setting window frame to \(frame)")
-		NSLog("  Screen frame: \(screen.frame)")
-		NSLog("  Screen localizedName: \(screen.localizedName)")
-		NSLog("  targetDisplay id: \(targetDisplay?.id.uuidString ?? "nil")")
-
 		setFrame(frame, display: true)
-
-		NSLog("  AFTER setFrame: window.frame = \(self.frame)")
-		NSLog("  AFTER setFrame: window.screen?.frame = \(self.screen?.frame ?? .zero)")
-		NSLog("  AFTER setFrame: window.screen?.localizedName = \(self.screen?.localizedName ?? "nil")")
 	}
 
 	/**
