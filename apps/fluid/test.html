@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Fluid Test</title>
+    <style>
+        body { margin: 0; background: #000; color: #fff; font-family: monospace; }
+        canvas { width: 100%; height: 100vh; }
+        #info { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); padding: 10px; }
+    </style>
+</head>
+<body>
+    <div id="info">
+        <div>WebGL Status: <span id="status">Checking...</span></div>
+        <div>Canvas Size: <span id="size"></span></div>
+        <div>Move mouse quickly to test</div>
+    </div>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const status = document.getElementById('status');
+        const sizeDisplay = document.getElementById('size');
+
+        // Test WebGL
+        const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+
+        if (!gl) {
+            status.textContent = 'NOT SUPPORTED';
+            status.style.color = 'red';
+        } else {
+            status.textContent = 'OK';
+            status.style.color = 'lime';
+
+            // Resize canvas
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            sizeDisplay.textContent = `${canvas.width}x${canvas.height}`;
+
+            // Clear to red to verify it's working
+            gl.clearColor(1.0, 0.0, 0.0, 1.0);
+            gl.clear(gl.COLOR_BUFFER_BIT);
+        }
+    </script>
+</body>
+</html>
