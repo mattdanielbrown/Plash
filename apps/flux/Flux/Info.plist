@@ -8,10 +8,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.sindresorhus.Plash</string>
+			<string>com.sindresorhus.Flux</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>plash</string>
+				<string>flux</string>
 			</array>
 		</dict>
 	</array>

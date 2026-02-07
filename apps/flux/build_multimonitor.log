@@ -74,15 +74,15 @@ ClangStatCache /Users/stoked/Downloads/Xcode.app/Contents/Developer/Toolchains/X
 
 ProcessProductPackaging /Users/stoked/work/flux/apps/flux/ShareExtension/ShareExtension.entitlements /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Share\ Extension.build/Share\ Extension.appex.xcent (in target 'Share Extension' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    
+
     Entitlements:
-    
+
     {
     "com.apple.security.app-sandbox" = 1;
     "com.apple.security.files.user-selected.read-only" = 1;
     "com.apple.security.get-task-allow" = 1;
 }
-    
+
     builtin-productPackagingUtility /Users/stoked/work/flux/apps/flux/ShareExtension/ShareExtension.entitlements -entitlements -format xml -o /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Share\ Extension.build/Share\ Extension.appex.xcent
 
 Copy /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/GeneratedModuleMaps/LaunchAtLogin.modulemap /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/LaunchAtLogin.build/Debug/LaunchAtLogin.build/LaunchAtLogin.modulemap (in target 'LaunchAtLogin' from project 'LaunchAtLogin')
@@ -127,9 +127,9 @@ SwiftDriver KeyboardShortcuts normal arm64 com.apple.xcode.tools.swift.compiler 
 
 CodeSign /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Share\ Extension.appex (in target 'Share Extension' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    
+
     Signing Identity:     "Apple Development: brianstoker@gmail.com (CL3RMYP485)"
-    
+
     /usr/bin/codesign --force --sign 2A61A6A36F2E1B60E7DEC9BA0137F656073756C7 -o runtime --entitlements /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Share\ Extension.build/Share\ Extension.appex.xcent --timestamp\=none --generate-entitlement-der /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Share\ Extension.appex
 /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Share Extension.appex: replacing existing signature
 
@@ -170,11 +170,11 @@ SwiftMergeGeneratedHeaders /Users/stoked/Library/Developer/Xcode/DerivedData/Flu
     builtin-swiftHeaderTool -arch arm64 /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/KeyboardShortcuts.build/Debug/KeyboardShortcuts.build/Objects-normal/arm64/KeyboardShortcuts-Swift.h -o /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/GeneratedModuleMaps/KeyboardShortcuts-Swift.h
 
 note: Run script build phase 'SwiftLint' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Flux' from project 'Flux')
-ProcessProductPackaging /Users/stoked/work/flux/apps/flux/Flux/Plash.entitlements /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build/Flux.app.xcent (in target 'Flux' from project 'Flux')
+ProcessProductPackaging /Users/stoked/work/flux/apps/flux/Flux/Flux.entitlements /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build/Flux.app.xcent (in target 'Flux' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    
+
     Entitlements:
-    
+
     {
     "com.apple.security.app-sandbox" = 1;
     "com.apple.security.files.downloads.read-write" = 1;
@@ -182,8 +182,8 @@ ProcessProductPackaging /Users/stoked/work/flux/apps/flux/Flux/Plash.entitlement
     "com.apple.security.get-task-allow" = 1;
     "com.apple.security.network.client" = 1;
 }
-    
-    builtin-productPackagingUtility /Users/stoked/work/flux/apps/flux/Flux/Plash.entitlements -entitlements -format xml -o /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build/Flux.app.xcent
+
+    builtin-productPackagingUtility /Users/stoked/work/flux/apps/flux/Flux/Flux.entitlements -entitlements -format xml -o /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build/Flux.app.xcent
 
 ProcessProductPackagingDER /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build/Flux.app.xcent /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build/Flux.app.xcent.der (in target 'Flux' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux

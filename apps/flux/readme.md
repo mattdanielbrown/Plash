@@ -1,8 +1,8 @@
 <div align="center">
-	<a href="https://sindresorhus.com/plash">
+	<a href="https://sindresorhus.com/flux">
 		<img src="Stuff/AppIcon-readme.png" width="200" height="200">
 	</a>
-	<h1>Plash</h1>
+	<h1>Flux</h1>
 	<p>
 		<b>Make any website your Mac desktop wallpaper</b>
 	</p>
@@ -11,11 +11,11 @@
 	<br>
 </div>
 
-Plash enables you to have a highly dynamic desktop wallpaper. You could display your favorite news site, Facebook feed, or a random beautiful scenery photo. The use-cases are limitless. You could even set an animated GIF as wallpaper. You can even add multiple websites and easily switch between them.
+Flux enables you to have a highly dynamic desktop wallpaper. You could display your favorite news site, Facebook feed, or a random beautiful scenery photo. The use-cases are limitless. You could even set an animated GIF as wallpaper. You can even add multiple websites and easily switch between them.
 
 ## Use-cases
 
-- [**Bing Photo of the Day**](https://github.com/sindresorhus/plash-bing-photo-of-the-day)
+- [**Bing Photo of the Day**](https://github.com/sindresorhus/flux-bing-photo-of-the-day)
 - **Calendar**\
 	For example, Google Calendar or Outlook 365.
 - **Personal stats**\
@@ -27,7 +27,7 @@ Plash enables you to have a highly dynamic desktop wallpaper. You could display 
 - **Build a custom website**\
 	You could build something quick and host it on [GitHub Pages](https://pages.github.com), [jsfiddle](https://jsfiddle.net), or [CodePen](https://codepen.io).
 
-[*Share your use-case*](https://github.com/sindresorhus/Plash/discussions/136)
+[*Share your use-case*](https://github.com/sindresorhus/Flux/discussions/136)
 
 ## Features
 
@@ -41,7 +41,7 @@ Plash enables you to have a highly dynamic desktop wallpaper. You could display 
 - Invert website colors (fake dark mode)
 - Add custom CSS and JavaScript to the website
 - Lower the opacity
-- [Transparent background](https://github.com/sindresorhus/Plash/issues/1#issuecomment-573513816)
+- [Transparent background](https://github.com/sindresorhus/Flux/issues/1#issuecomment-573513816)
 - Automatically deactivate while on battery
 - Audio is muted
 - Single image will be aspect-filled to your screen
@@ -58,17 +58,17 @@ Requires macOS 15 or later.
 
 **Older versions**
 
-- [2.15.0](https://github.com/user-attachments/files/18840646/Plash.2.15.0.-.macOS.14.zip) for macOS 14+
-- [2.14.1](https://github.com/sindresorhus/Plash/releases/download/v2.14.1/Plash.2.14.1.-.macOS.13.zip) for macOS 13+
-- [2.12.1](https://github.com/sindresorhus/Plash/releases/download/v2.12.1/Plash.2.12.1.-.macOS.12.zip) for macOS 12+
-- [2.10.1](https://github.com/sindresorhus/Plash/releases/download/v2.10.1/Plash.2.10.1.-.macOS.11.zip) for macOS 11+
-- [2.1.0](https://github.com/sindresorhus/Plash/releases/download/v2.1.0/Plash.2.1.1.-.macOS.10.15.zip) for macOS 10.15+
+- [2.15.0](https://github.com/user-attachments/files/18840646/Flux.2.15.0.-.macOS.14.zip) for macOS 14+
+- [2.14.1](https://github.com/sindresorhus/Flux/releases/download/v2.14.1/Flux.2.14.1.-.macOS.13.zip) for macOS 13+
+- [2.12.1](https://github.com/sindresorhus/Flux/releases/download/v2.12.1/Flux.2.12.1.-.macOS.12.zip) for macOS 12+
+- [2.10.1](https://github.com/sindresorhus/Flux/releases/download/v2.10.1/Flux.2.10.1.-.macOS.11.zip) for macOS 11+
+- [2.1.0](https://github.com/sindresorhus/Flux/releases/download/v2.1.0/Flux.2.1.1.-.macOS.10.15.zip) for macOS 10.15+
 
 **Non-App Store version**
 
 A special version for users that cannot access the App Store. It won't receive automatic updates. I will update it here once a year.
 
-[Download](https://github.com/user-attachments/files/18840560/Plash.2.16.0.zip) *(2.16.0 · macOS 15+)*
+[Download](https://github.com/user-attachments/files/18840560/Flux.2.16.0.zip) *(2.16.0 · macOS 15+)*
 
 ## Tips
 
@@ -76,9 +76,9 @@ A special version for users that cannot access the App Store. It won't receive a
 
 You can interact with the website by enabling “Browsing Mode”. When in this mode, you can right-click to be able to go back/forward, reload, and zoom in the page contents (the zoom level is saved). You can also pinch to magnify. This is different from zooming the page contents in that it will zoom in to a specific part of the page instead of just enlarging everything.
 
-Plash injects a CSS class named `plash-is-browsing-mode` on the `<html>` element while browsing mode is active. You could use this class to customize the website for browsing mode.
+Flux injects a CSS class named `flux-is-browsing-mode` on the `<html>` element while browsing mode is active. You could use this class to customize the website for browsing mode.
 
-If clicking a link opens it in a new window, you can hold the <kbd>Option</kbd> key while clicking the link to open it in the main Plash window.
+If clicking a link opens it in a new window, you can hold the <kbd>Option</kbd> key while clicking the link to open it in the main Flux window.
 
 ### Zoom in website
 
@@ -86,7 +86,7 @@ To zoom in the website, activate “Browsing Mode”, right-click the website, a
 
 ### URL placeholders for screen width and height
 
-Use `[[screenWidth]]` and `[[screenHeight]]` in any URL and Plash will substitute the right values for you. For example, `https://source.unsplash.com/random/[[screenWidth]]x[[screenHeight]]?puppy`.
+Use `[[screenWidth]]` and `[[screenHeight]]` in any URL and Flux will substitute the right values for you. For example, `https://source.unsflux.com/random/[[screenWidth]]x[[screenHeight]]?puppy`.
 
 ### Scroll to position
 
@@ -112,9 +112,9 @@ You can use the “CSS” field in the website settings to adjust the padding of
 }
 ```
 
-### Detect Plash
+### Detect Flux
 
-Plash injects a CSS class named `is-plash-app` on the `<html>` element. You could use this class to customize your website for Plash. For example, if your website has instructions on how to use it in Plash, you could hide those when it's running in Plash.
+Flux injects a CSS class named `is-flux-app` on the `<html>` element. You could use this class to customize your website for Flux. For example, if your website has instructions on how to use it in Flux, you could hide those when it's running in Flux.
 
 ### Multi-monitor support
 
@@ -124,7 +124,7 @@ When multi-monitor mode is enabled, a new section will appear in the settings al
 
 ### Mouse position events
 
-Plash can send mouse position data to your website even when not in browsing mode. This is useful for creating interactive effects like parallax scrolling or mouse-following elements.
+Flux can send mouse position data to your website even when not in browsing mode. This is useful for creating interactive effects like parallax scrolling or mouse-following elements.
 
 To enable this feature:
 1. Go to Settings → Advanced
@@ -134,7 +134,7 @@ Your website can then listen for mouse position events:
 
 ```js
 // Listen for mouse movement events
-document.addEventListener('plashMouseMove', (event) => {
+document.addEventListener('fluxMouseMove', (event) => {
     const { x, y, normalizedX, normalizedY } = event.detail;
     console.log(`Mouse at: ${x}, ${y}`);
 
@@ -143,7 +143,7 @@ document.addEventListener('plashMouseMove', (event) => {
 });
 
 // Or access the global variable
-console.log(window.plashMouse);
+console.log(window.fluxMouse);
 // { x: 123, y: 456, normalizedX: 0.5, normalizedY: 0.5, windowWidth: 1920, windowHeight: 1080 }
 ```
 
@@ -164,34 +164,34 @@ The event includes:
 
 ## Scripting
 
-You can control Plash using anything that supports opening a URL with a custom scheme.
+You can control Flux using anything that supports opening a URL with a custom scheme.
 
 For example, to reload the current website, run this terminal command:
 
 ```console
-$ open -g plash:reload
+$ open -g flux:reload
 ```
 
 ## Share extension
 
-Plash comes bundled with a [share extension](https://support.apple.com/guide/mac-help/use-the-share-menu-on-mac-mh40614/mac). You can, for example, use it to quickly add a website you have open in Safari to Plash.
+Flux comes bundled with a [share extension](https://support.apple.com/guide/mac-help/use-the-share-menu-on-mac-mh40614/mac). You can, for example, use it to quickly add a website you have open in Safari to Flux.
 
 ### Tools
 
-- [plash-cli](https://github.com/sindresorhus/plash-cli) - Command-line tool.
-- [alfred-plash](https://github.com/sindresorhus/alfred-plash) - Alfred workflow.
-- [Raycast commands](https://github.com/raycast/script-commands/tree/master/commands#plash)
+- [flux-cli](https://github.com/sindresorhus/flux-cli) - Command-line tool.
+- [alfred-flux](https://github.com/sindresorhus/alfred-flux) - Alfred workflow.
+- [Raycast commands](https://github.com/raycast/script-commands/tree/master/commands#flux)
 
 ### Commands
 
 #### `add`
 
-Add a website to Plash.
+Add a website to Flux.
 
 You can optionally specify a title. If no title is given, a title will be automatically fetched from the website.
 
 ```console
-$ open -g 'plash:add?url=https://sindresorhus.com/plash&title=Plash%20website'
+$ open -g 'flux:add?url=https://sindresorhus.com/flux&title=Flux%20website'
 ```
 
 *Don't forget to correctly encode query parameters.*
@@ -203,7 +203,7 @@ $ open -g 'plash:add?url=https://sindresorhus.com/plash&title=Plash%20website'
 Reload the current website.
 
 ```console
-$ open -g plash:reload
+$ open -g flux:reload
 ```
 
 #### `next`
@@ -211,7 +211,7 @@ $ open -g plash:reload
 Switch to the next website in the list.
 
 ```console
-$ open -g plash:next
+$ open -g flux:next
 ```
 
 #### `previous`
@@ -219,7 +219,7 @@ $ open -g plash:next
 Switch to the previous website in the list.
 
 ```console
-$ open -g plash:previous
+$ open -g flux:previous
 ```
 
 #### `random`
@@ -229,7 +229,7 @@ Switch to a random website in the list.
 It will never show the same website twice in a row, unless you only have a single website.
 
 ```console
-$ open -g plash:random
+$ open -g flux:random
 ```
 
 #### `toggle-browsing-mode`
@@ -237,7 +237,7 @@ $ open -g plash:random
 Toggle browsing mode.
 
 ```console
-$ open -g plash:toggle-browsing-mode
+$ open -g flux:toggle-browsing-mode
 ```
 
 ### Examples
@@ -247,7 +247,7 @@ $ open -g plash:toggle-browsing-mode
 ```js
 import {execFileSync} from 'node:child_process';
 
-execFileSync('open', ['--background', 'plash:reload']);
+execFileSync('open', ['--background', 'flux:reload']);
 ```
 
 #### Swift
@@ -255,7 +255,7 @@ execFileSync('open', ['--background', 'plash:reload']);
 ```swift
 import Cocoa
 
-let command = "plash:reload"
+let command = "flux:reload"
 
 let configuration = NSWorkspace.OpenConfiguration()
 configuration.activates = false
@@ -265,7 +265,7 @@ NSWorkspace.shared.open(URL(string: command)!, configuration: configuration)
 #### AppleScript
 
 ```applescript
-do shell script "open --background 'plash:reload'"
+do shell script "open --background 'flux:reload'"
 ```
 
 #### Python
@@ -273,7 +273,7 @@ do shell script "open --background 'plash:reload'"
 ```python
 import subprocess
 
-subprocess.run(['open', '--background', 'plash:reload'])
+subprocess.run(['open', '--background', 'flux:reload'])
 ```
 
 ## FAQ
@@ -284,23 +284,23 @@ macOS hides menu bar apps when there is no space left in the menu bar. This is a
 
 #### Can it automatically switch websites every 10 minutes?
 
-Plash can be automated with the built-in Shortcuts app, for example, using the “Switch to Next Website” action. Shortcuts on macOS does not yet support automations, but for now, you can use the [Shortery app](https://apps.apple.com/app/id1594183810).
+Flux can be automated with the built-in Shortcuts app, for example, using the “Switch to Next Website” action. Shortcuts on macOS does not yet support automations, but for now, you can use the [Shortery app](https://apps.apple.com/app/id1594183810).
 
 #### Does it support multiple displays?
 
-Support for multiple displays is currently limited to the ability to choose which display to show the website on. Support for setting a separate website for each display is [planned](https://github.com/sindresorhus/Plash/issues/2).
+Support for multiple displays is currently limited to the ability to choose which display to show the website on. Support for setting a separate website for each display is [planned](https://github.com/sindresorhus/Flux/issues/2).
 
-However, I there is a [workaround](https://github.com/sindresorhus/Plash/issues/2#issuecomment-653891524).
+However, I there is a [workaround](https://github.com/sindresorhus/Flux/issues/2#issuecomment-653891524).
 
-#### Why does Plash use so much memory?
+#### Why does Flux use so much memory?
 
-Plash uses very little memory. Usually around 40 MB. However, the websites you display can take up a lot of memory, and sometimes even have a memory leaks.
+Flux uses very little memory. Usually around 40 MB. However, the websites you display can take up a lot of memory, and sometimes even have a memory leaks.
 
-#### The menu bar does not adapt to the Plash wallpaper
+#### The menu bar does not adapt to the Flux wallpaper
 
-The menu bar adapts its color from the actual system wallpaper. Plash is not actually a wallpaper, but rather runs right above the wallpaper. So Plash cannot influence the menu bar color.
+The menu bar adapts its color from the actual system wallpaper. Flux is not actually a wallpaper, but rather runs right above the wallpaper. So Flux cannot influence the menu bar color.
 
-#### Can Plash block ads?
+#### Can Flux block ads?
 
 Not built-in, but you can block ads system-wide with a [DNS ad-blocker](https://alternate-dns.com).
 
@@ -312,9 +312,9 @@ Make a shortcut in the Shortcuts app that uses the “Set Current Website” act
 
 I don't plan to localize the app.
 
-#### What does “Plash” mean?
+#### What does “Flux” mean?
 
-[Click here.](http://letmegooglethat.com/?q=define+plash)
+[Click here.](http://letmegooglethat.com/?q=define+flux)
 
 #### [More FAQs…](https://sindresorhus.com/apps/faq)
 

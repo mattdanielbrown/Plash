@@ -14,6 +14,10 @@ final class DisplayManager {
 	private var globalMouseMonitor: Any?
 	private var localMouseMonitor: Any?
 	private var bottomRightDisplayId: UUID?
+	private var globalMouseBroadcaster: Any?
+	private var lastGlobalMousePosition: CGPoint = .zero
+	private var lastGlobalMouseUpdateTime: Date = .distantPast
+	private let mouseThrottleInterval: TimeInterval = 0.016 // ~60fps
 
 	var windows: [DesktopWindow] {
 		contexts.values.map(\.window)
@@ -177,6 +181,100 @@ final class DisplayManager {
 	}
 
 	/**
+	Sets up global mouse broadcasting for fluid simulation continuity across all monitors.
+	Unlike individual MouseTrackers, this broadcasts the same global mouse position to ALL monitors.
+	*/
+	func setupFluidMouseBroadcasting() {
+		// Remove existing broadcaster
+		if let broadcaster = globalMouseBroadcaster {
+			NSEvent.removeMonitor(broadcaster)
+			globalMouseBroadcaster = nil
+		}
+
+		// Add global mouse monitor that broadcasts to all monitors
+		globalMouseBroadcaster = NSEvent.addGlobalMonitorForEvents(matching: [.mouseMoved, .leftMouseDragged, .rightMouseDragged, .otherMouseDragged]) { [weak self] event in
+			self?.broadcastGlobalMousePosition()
+		}
+	}
+
+	/**
+	Stops the global mouse broadcasting.
+	*/
+	func stopFluidMouseBroadcasting() {
+		if let broadcaster = globalMouseBroadcaster {
+			NSEvent.removeMonitor(broadcaster)
+			globalMouseBroadcaster = nil
+		}
+	}
+
+	/**
+	Broadcasts the current global mouse position to ALL monitors for fluid continuity.
+	*/
+	private func broadcastGlobalMousePosition() {
+		// Throttle updates to reduce CPU usage
+		let now = Date()
+		guard now.timeIntervalSince(lastGlobalMouseUpdateTime) >= mouseThrottleInterval else {
+			return
+		}
+		lastGlobalMouseUpdateTime = now
+
+		// Get mouse location in screen coordinates
+		let mouseLocation = NSEvent.mouseLocation
+
+		// Skip if position hasn't changed
+		guard mouseLocation != lastGlobalMousePosition else {
+			return
+		}
+		lastGlobalMousePosition = mouseLocation
+
+		// Calculate global bounding box of all screens
+		let screens = NSScreen.screens
+		guard !screens.isEmpty else {
+			return
+		}
+
+		var globalBounds = screens[0].frame
+		for screen in screens {
+			globalBounds = globalBounds.union(screen.frame)
+		}
+
+		// Convert mouse location to global coordinates (top-left origin for web)
+		let globalX = mouseLocation.x - globalBounds.origin.x
+		let globalY = globalBounds.size.height - (mouseLocation.y - globalBounds.origin.y)
+
+		// Broadcast to ALL contexts
+		for context in contexts.values {
+			guard let screen = context.display.screen else {
+				continue
+			}
+
+			let screenFrame = screen.frame
+
+			// Calculate local coordinates for this screen
+			let macOSRelativeX = screenFrame.origin.x - globalBounds.origin.x
+			let macOSRelativeY = screenFrame.origin.y - globalBounds.origin.y
+			let screenOffsetX = macOSRelativeX
+			let screenOffsetY = globalBounds.size.height - macOSRelativeY - screenFrame.size.height
+
+			// Mouse position relative to this screen's top-left
+			let localX = globalX - screenOffsetX
+			let localY = globalY - screenOffsetY
+
+			// Inject global mouse position to this monitor
+			context.webViewController.injectGlobalMousePosition(
+				globalX: globalX,
+				globalY: globalY,
+				globalWidth: globalBounds.size.width,
+				globalHeight: globalBounds.size.height,
+				localX: localX,
+				localY: localY,
+				screenOffsetX: screenOffsetX,
+				screenOffsetY: screenOffsetY
+			)
+		}
+	}
+
+	/**
 	Set the website for a specific display.
 	*/
 	func setWebsite(_ website: Website?, for displayId: UUID) {
@@ -337,6 +435,12 @@ final class DisplayManager {
 		// Inject initial display arrangement
 		injectDisplayArrangement(to: webViewController, for: display)
 
+		// Start global mouse broadcasting if mouse events are enabled
+		// This enables fluid effects to flow across all monitors seamlessly
+		if Defaults[.sendMousePositionEvents] {
+			setupFluidMouseBroadcasting()
+		}
+
 		// Load the assigned website for this display if available
 		if let websiteId = Defaults[.websitesPerDisplay][display.id.uuidString],
 		   let website = WebsitesController.shared.all.first(where: { $0.id.uuidString == websiteId }) {
@@ -399,6 +503,11 @@ final class DisplayManager {
 		context.window.mouseTracker.isEnabled = false
 		context.window.close()
 		contexts.removeValue(forKey: displayId)
+
+		// Stop global broadcasting if no contexts remain
+		if contexts.isEmpty {
+			stopFluidMouseBroadcasting()
+		}
 	}
 
 	/**
@@ -414,6 +523,9 @@ final class DisplayManager {
 			NSEvent.removeMonitor(monitor)
 			localMouseMonitor = nil
 		}
+
+		// Stop global fluid broadcasting
+		stopFluidMouseBroadcasting()
 
 		for context in contexts.values {
 			context.window.close()

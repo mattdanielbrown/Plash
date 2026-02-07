@@ -126,9 +126,11 @@ private struct RowView: View {
 			Button("Edit…") {
 				selection = website.id
 			}
-			Divider()
-			Button("Delete", role: .destructive) {
-				website.remove()
+			if !website.isBuiltIn {
+				Divider()
+				Button("Delete", role: .destructive) {
+					website.remove()
+				}
 			}
 		}
 		.accessibilityElement(children: .combine)

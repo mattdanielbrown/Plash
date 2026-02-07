@@ -1,14 +1,14 @@
 {
-	"ApplicationDescription": "Plash lets you set a website as your desktop wallpaper.",
-	"DeveloperName": "Sindre Sorhus",
-	"Website": "https://sindresorhus.com/plash",
-	"Connections" : [
+	"ApplicationDescription": "Flux lets you set a website as your desktop wallpaper.",
+	"DeveloperName": "Brian Stoker",
+	"Website": "https://sindresorhus.com/flux",
+	"Connections": [
 		{
-			"Host" : "*.sentry.io",
-			"NetworkProtocol" : "TCP",
-			"Port" : "443",
-			"Purpose" : "Plash sends crash reports to this server.",
-			"DenyConsequences" : "If you deny this connection, crash reports will not be sent and bugs might stay unfixed."
+			"Host": "*.sentry.io",
+			"NetworkProtocol": "TCP",
+			"Port": "443",
+			"Purpose": "Flux sends crash reports to this server.",
+			"DenyConsequences": "If you deny this connection, crash reports will not be sent and bugs might stay unfixed."
 		}
 	]
 }

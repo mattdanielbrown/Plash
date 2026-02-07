@@ -29,7 +29,7 @@ extension Defaults.Keys {
 	static let openExternalLinksInBrowser = Key<Bool>("openExternalLinksInBrowser", default: false)
 	static let muteAudio = Key<Bool>("muteAudio", default: true)
 
-	static let extendPlashBelowMenuBar = Key<Bool>("extendPlashBelowMenuBar", default: false)
+	static let extendFluxBelowMenuBar = Key<Bool>("extendFluxBelowMenuBar", default: false)
 
 	// Multi-monitor settings
 	static let enableMultiMonitor = Key<Bool>("enableMultiMonitor", default: false)

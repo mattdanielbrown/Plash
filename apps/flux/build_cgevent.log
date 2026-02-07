@@ -106,15 +106,15 @@ ProcessInfoPlistFile /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqi
 
 ProcessProductPackaging /Users/stoked/work/flux/apps/flux/ShareExtension/ShareExtension.entitlements /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Share\ Extension.build/Share\ Extension.appex.xcent (in target 'Share Extension' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    
+
     Entitlements:
-    
+
     {
     "com.apple.security.app-sandbox" = 1;
     "com.apple.security.files.user-selected.read-only" = 1;
     "com.apple.security.get-task-allow" = 1;
 }
-    
+
     builtin-productPackagingUtility /Users/stoked/work/flux/apps/flux/ShareExtension/ShareExtension.entitlements -entitlements -format xml -o /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Share\ Extension.build/Share\ Extension.appex.xcent
 
 ProcessProductPackagingDER /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Share\ Extension.build/Share\ Extension.appex.xcent /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Share\ Extension.build/Share\ Extension.appex.xcent.der (in target 'Share Extension' from project 'Flux')
@@ -162,9 +162,9 @@ ExtractAppIntentsMetadata (in target 'Share Extension' from project 'Flux')
 
 CodeSign /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Share\ Extension.appex/Contents/MacOS/Share\ Extension.debug.dylib (in target 'Share Extension' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    
+
     Signing Identity:     "Apple Development: brianstoker@gmail.com (CL3RMYP485)"
-    
+
     /usr/bin/codesign --force --sign 2A61A6A36F2E1B60E7DEC9BA0137F656073756C7 -o runtime --timestamp\=none --generate-entitlement-der /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Share\ Extension.appex/Contents/MacOS/Share\ Extension.debug.dylib
 
 SwiftDriver\ Compilation LaunchAtLogin normal arm64 com.apple.xcode.tools.swift.compiler (in target 'LaunchAtLogin' from project 'LaunchAtLogin')
@@ -203,11 +203,11 @@ SwiftMergeGeneratedHeaders /Users/stoked/Library/Developer/Xcode/DerivedData/Flu
     cd /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/SourcePackages/checkouts/KeyboardShortcuts
     builtin-swiftHeaderTool -arch arm64 /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/KeyboardShortcuts.build/Debug/KeyboardShortcuts.build/Objects-normal/arm64/KeyboardShortcuts-Swift.h -o /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/GeneratedModuleMaps/KeyboardShortcuts-Swift.h
 
-ProcessProductPackaging /Users/stoked/work/flux/apps/flux/Flux/Plash.entitlements /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build/Flux.app.xcent (in target 'Flux' from project 'Flux')
+ProcessProductPackaging /Users/stoked/work/flux/apps/flux/Flux/Flux.entitlements /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build/Flux.app.xcent (in target 'Flux' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    
+
     Entitlements:
-    
+
     {
     "com.apple.security.app-sandbox" = 1;
     "com.apple.security.files.downloads.read-write" = 1;
@@ -215,8 +215,8 @@ ProcessProductPackaging /Users/stoked/work/flux/apps/flux/Flux/Plash.entitlement
     "com.apple.security.get-task-allow" = 1;
     "com.apple.security.network.client" = 1;
 }
-    
-    builtin-productPackagingUtility /Users/stoked/work/flux/apps/flux/Flux/Plash.entitlements -entitlements -format xml -o /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build/Flux.app.xcent
+
+    builtin-productPackagingUtility /Users/stoked/work/flux/apps/flux/Flux/Flux.entitlements -entitlements -format xml -o /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build/Flux.app.xcent
 
 ProcessProductPackagingDER /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build/Flux.app.xcent /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build/Flux.app.xcent.der (in target 'Flux' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
@@ -224,16 +224,16 @@ ProcessProductPackagingDER /Users/stoked/Library/Developer/Xcode/DerivedData/Flu
 
 CodeSign /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Share\ Extension.appex/Contents/MacOS/__preview.dylib (in target 'Share Extension' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    
+
     Signing Identity:     "Apple Development: brianstoker@gmail.com (CL3RMYP485)"
-    
+
     /usr/bin/codesign --force --sign 2A61A6A36F2E1B60E7DEC9BA0137F656073756C7 -o runtime --timestamp\=none --generate-entitlement-der /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Share\ Extension.appex/Contents/MacOS/__preview.dylib
 
 CodeSign /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Share\ Extension.appex (in target 'Share Extension' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    
+
     Signing Identity:     "Apple Development: brianstoker@gmail.com (CL3RMYP485)"
-    
+
     /usr/bin/codesign --force --sign 2A61A6A36F2E1B60E7DEC9BA0137F656073756C7 -o runtime --entitlements /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Share\ Extension.build/Share\ Extension.appex.xcent --timestamp\=none --generate-entitlement-der /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Share\ Extension.appex
 
 RegisterExecutionPolicyException /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Share\ Extension.appex (in target 'Share Extension' from project 'Flux')
@@ -300,9 +300,9 @@ note: Injecting stub binary into codeless framework (in target 'Flux' from proje
 
 CodeSign /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Flux.app/Contents/Frameworks/Sentry.framework/Versions/A (in target 'Flux' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    
+
     Signing Identity:     "Apple Development: brianstoker@gmail.com (CL3RMYP485)"
-    
+
     /usr/bin/codesign --force --sign 2A61A6A36F2E1B60E7DEC9BA0137F656073756C7 -o runtime --timestamp\=none --preserve-metadata\=identifier,entitlements,flags --generate-entitlement-der /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Flux.app/Contents/Frameworks/Sentry.framework/Versions/A
 /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Flux.app/Contents/Frameworks/Sentry.framework/Versions/A: replacing existing signature
 
@@ -318,7 +318,7 @@ SwiftEmitModule normal arm64 Emitting\ module\ for\ Flux (in target 'Flux' from 
 
 EmitSwiftModule normal arm64 (in target 'Flux' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    
+
 
 SwiftCompile normal arm64 Compiling\ MouseTracker.swift /Users/stoked/work/flux/apps/flux/Flux/MouseTracker.swift (in target 'Flux' from project 'Flux')
 Failed frontend command:
@@ -326,7 +326,7 @@ Failed frontend command:
 
 SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Flux/MouseTracker.swift (in target 'Flux' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    
+
 /Users/stoked/work/flux/apps/flux/Flux/MouseTracker.swift:32:7: error: main actor-isolated property 'isEnabled' can not be referenced from a nonisolated context
                         if isEnabled {
                            ^
@@ -356,30 +356,30 @@ SwiftCompile normal arm64 Compiling\ Events.swift /Users/stoked/work/flux/apps/f
 
 SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Flux/Events.swift (in target 'Flux' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    
+
 
 SwiftCompile normal arm64 Compiling\ DisplayManager.swift /Users/stoked/work/flux/apps/flux/Flux/DisplayManager.swift (in target 'Flux' from project 'Flux')
 
 SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Flux/DisplayManager.swift (in target 'Flux' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    
+
 
 SwiftCompile normal arm64 Compiling\ WebViewController.swift /Users/stoked/work/flux/apps/flux/Flux/WebViewController.swift (in target 'Flux' from project 'Flux')
 SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Flux/WebViewController.swift (in target 'Flux' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    
+
 
 SwiftCompile normal arm64 Compiling\ Constants.swift /Users/stoked/work/flux/apps/flux/Flux/Constants.swift (in target 'Flux' from project 'Flux')
 
 SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Flux/Constants.swift (in target 'Flux' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    
+
 
 SwiftCompile normal arm64 Compiling\ SettingsScreen.swift /Users/stoked/work/flux/apps/flux/Flux/SettingsScreen.swift (in target 'Flux' from project 'Flux')
 
 SwiftCompile normal arm64 /Users/stoked/work/flux/apps/flux/Flux/SettingsScreen.swift (in target 'Flux' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    
+
 
 note: Run script build phase 'SwiftLint' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Flux' from project 'Flux')
 ** BUILD FAILED **

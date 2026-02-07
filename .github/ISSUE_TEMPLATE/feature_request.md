@@ -1,6 +1,6 @@
 ---
 name: ⭐ Feature request
-about: Suggest an idea for Plash
+about: Suggest an idea for Flux
 labels: enhancement
 ---
 

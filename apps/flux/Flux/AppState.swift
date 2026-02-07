@@ -99,6 +99,7 @@ final class AppState: ObservableObject {
 
 	private func didLaunch() {
 		_ = statusItemButton
+		addBuiltInWebsiteIfNeeded()
 		initializeDisplays()
 		setUpEvents()
 		showWelcomeScreenIfNeeded()
@@ -107,6 +108,29 @@ final class AppState: ObservableObject {
 //		SSApp.showSettingsWindow()
 //		Constants.openWebsitesWindow()
 		#endif
+	}
+
+	private func addBuiltInWebsiteIfNeeded() {
+		let controller = WebsitesController.shared
+
+		guard !controller.all.contains(where: \.isBuiltIn) else {
+			return
+		}
+
+		guard let url = Bundle.main.url(forResource: "FluidSimulation", withExtension: nil) else {
+			return
+		}
+
+		var website = Website(
+			id: UUID(),
+			isCurrent: true,
+			url: url,
+			usePrintStyles: false
+		)
+		website.title = "Fluid Simulation"
+		website.isBuiltIn = true
+
+		controller.add(website)
 	}
 
 	private func initializeDisplays() {

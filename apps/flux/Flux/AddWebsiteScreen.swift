@@ -127,7 +127,7 @@ struct AddWebsiteScreen: View {
 					.buttonStyle(.link)
 				}
 				Spacer()
-				Link("More ideas", destination: "https://github.com/sindresorhus/Plash/discussions/136")
+				Link("More ideas", destination: "https://github.com/sindresorhus/Flux/discussions/136")
 					.buttonStyle(.link)
 			}
 		}
@@ -138,6 +138,7 @@ struct AddWebsiteScreen: View {
 			TextField("URL", text: $urlString)
 				.textContentType(.URL)
 				.lineLimit(1)
+				.disabled(website.wrappedValue.isBuiltIn)
 				// This change listener is used to respond to URL changes from the outside, like the "Revert" button or the Shortcuts actions.
 				.onChange(of: website.wrappedValue.url) { _, url in
 					guard
@@ -179,7 +180,7 @@ struct AddWebsiteScreen: View {
 				}
 			TextField("Title", text: website.title)
 				.lineLimit(1)
-				.disabled(isFetchingTitle)
+				.disabled(isFetchingTitle || website.wrappedValue.isBuiltIn)
 				.overlay(alignment: .leading) {
 					if isFetchingTitle {
 						ProgressView()
@@ -198,6 +199,7 @@ struct AddWebsiteScreen: View {
 				}
 			}
 			.controlSize(.small)
+			.disabled(website.wrappedValue.isBuiltIn)
 		}
 	}
 

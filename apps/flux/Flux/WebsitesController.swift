@@ -122,6 +122,10 @@ final class WebsitesController: ObservableObject {
 	Remove a website.
 	*/
 	func remove(_ website: Website) {
+		guard !website.isBuiltIn else {
+			return
+		}
+
 		all = all.removingAll(website)
 	}
 

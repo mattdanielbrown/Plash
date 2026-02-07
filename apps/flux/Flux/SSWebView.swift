@@ -102,7 +102,7 @@ final class SSWebView: WKWebView {
 				}
 			}
 
-			menuItem.toolTip = "Updates the URL for the stored website in Plash to the current URL"
+			menuItem.toolTip = "Updates the URL for the stored website in Flux to the current URL"
 		}
 
 		menu.addSeparator()
@@ -125,7 +125,7 @@ final class SSWebView: WKWebView {
 	func toggleBrowsingModeClass() {
 		Task {
 			try? await callAsyncJavaScript(
-				"document.documentElement.classList[method]('plash-is-browsing-mode')",
+				"document.documentElement.classList[method]('flux-is-browsing-mode')",
 				arguments: [
 					"method": Defaults[.isBrowsingMode] ? "add" : "remove"
 				],

@@ -73,7 +73,7 @@ final class DesktopWindow: NSWindow {
 		self.collectionBehavior = [
 			.stationary,
 			.ignoresCycle,
-			.fullScreenNone // This ensures that if Plash is launched while an app is fullscreen (fullscreen is a separate space), it will not show behind that app and instead show in the primary space.
+			.fullScreenNone // This ensures that if Flux is launched while an app is fullscreen (fullscreen is a separate space), it will not show behind that app and instead show in the primary space.
 		]
 
 		disableSnapshotRestoration()
@@ -85,7 +85,7 @@ final class DesktopWindow: NSWindow {
 			}
 			.store(in: &cancellables)
 
-		Defaults.publisher(.extendPlashBelowMenuBar)
+		Defaults.publisher(.extendFluxBelowMenuBar)
 			.sink { [weak self] _ in
 				self?.setFrame()
 			}
@@ -101,7 +101,7 @@ final class DesktopWindow: NSWindow {
 		var frame = screen.frameWithoutStatusBar
 		frame.size.height += 1 // Probably not needed, but just to ensure it covers all the way up to the menu bar on older Macs (I can only test on M1 Mac)
 
-		if Defaults[.extendPlashBelowMenuBar] {
+		if Defaults[.extendFluxBelowMenuBar] {
 			frame = screen.frame
 		}
 

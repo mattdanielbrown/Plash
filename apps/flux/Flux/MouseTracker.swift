@@ -165,19 +165,20 @@ final class MouseTracker {
 		}
 		lastUpdateTime = now
 
-		let mouseLocation = NSEvent.mouseLocation // Screen coordinates
+		let mouseLocation = NSEvent.mouseLocation // Global screen coordinates
 		let windowFrame = window.frame
 
-		// In multi-monitor mode, only send events if mouse is on this window's screen
-		// This ensures each monitor's webpage gets the correct mouse position
-		if let windowScreen = window.screen {
-			// Find which screen the mouse is on
-			let mouseScreen = NSScreen.screens.first { $0.frame.contains(mouseLocation) }
+		// Get the screen this window is on
+		guard let windowScreen = window.screen else {
+			return
+		}
 
-			// Only process if mouse is on this window's screen
-			guard mouseScreen == windowScreen else {
-				return
-			}
+		// Find which screen the mouse is on
+		let mouseScreen = NSScreen.screens.first { $0.frame.contains(mouseLocation) }
+
+		// Only process if mouse is on this window's screen
+		guard mouseScreen == windowScreen else {
+			return
 		}
 
 		// Check if mouse is within window bounds (unless alwaysSendPosition is enabled)
@@ -187,20 +188,22 @@ final class MouseTracker {
 			}
 		}
 
-		// Convert to window coordinates (bottom-left origin)
-		let x = mouseLocation.x - windowFrame.minX
-		let y = mouseLocation.y - windowFrame.minY
+		// Convert to screen-relative coordinates
+		// Use the screen frame as reference to handle vertical/horizontal monitor arrangements
+		let screenFrame = windowScreen.frame
+		let x = mouseLocation.x - screenFrame.minX
+		let y = mouseLocation.y - screenFrame.minY
 
-		// Normalize to 0-1 range
-		let normalizedX = x / windowFrame.width
-		let normalizedY = y / windowFrame.height
+		// Normalize to 0-1 range based on screen size
+		let normalizedX = x / screenFrame.width
+		let normalizedY = y / screenFrame.height
 
 		let position = CGPoint(x: normalizedX, y: normalizedY)
 
 		// Only send update if position changed
 		if position != lastPosition {
 			lastPosition = position
-			onMouseMove?(position, windowFrame.size)
+			onMouseMove?(position, screenFrame.size)
 		}
 	}
 
@@ -219,35 +222,41 @@ final class MouseTracker {
 		}
 		lastUpdateTime = now
 
-		let mouseLocation = NSEvent.mouseLocation // Screen coordinates
-		let windowFrame = window.frame
+		let mouseLocation = NSEvent.mouseLocation // Global screen coordinates
+
+		// Get the screen this window is on
+		guard let windowScreen = window.screen else {
+			if enableDebugLogging {
+				print("MouseTracker [CGEvent]: No screen for window")
+			}
+			return
+		}
+
+		let screenFrame = windowScreen.frame
 
 		if enableDebugLogging {
-			print("MouseTracker [CGEvent]: Received event at \(mouseLocation), window frame: \(windowFrame)")
+			print("MouseTracker [CGEvent]: Received event at \(mouseLocation), screen frame: \(screenFrame)")
 		}
 
-		// In multi-monitor mode, only send events if mouse is on this window's screen
-		// This ensures each monitor's webpage gets the correct mouse position
-		if let windowScreen = window.screen {
-			// Find which screen the mouse is on
-			let mouseScreen = NSScreen.screens.first { $0.frame.contains(mouseLocation) }
+		// Find which screen the mouse is on
+		let mouseScreen = NSScreen.screens.first { $0.frame.contains(mouseLocation) }
 
-			// Only process if mouse is on this window's screen
-			guard mouseScreen == windowScreen else {
-				if enableDebugLogging {
-					print("MouseTracker [CGEvent]: Mouse on different screen, skipping")
-				}
-				return
+		// Only process if mouse is on this window's screen
+		guard mouseScreen == windowScreen else {
+			if enableDebugLogging {
+				print("MouseTracker [CGEvent]: Mouse on different screen, skipping")
 			}
+			return
 		}
 
-		// Convert to window coordinates (bottom-left origin)
-		let x = mouseLocation.x - windowFrame.minX
-		let y = mouseLocation.y - windowFrame.minY
+		// Convert to screen-relative coordinates
+		// Use the screen frame as reference to handle vertical/horizontal monitor arrangements
+		let x = mouseLocation.x - screenFrame.minX
+		let y = mouseLocation.y - screenFrame.minY
 
-		// Normalize to 0-1 range
-		let normalizedX = x / windowFrame.width
-		let normalizedY = y / windowFrame.height
+		// Normalize to 0-1 range based on screen size
+		let normalizedX = x / screenFrame.width
+		let normalizedY = y / screenFrame.height
 
 		let position = CGPoint(x: normalizedX, y: normalizedY)
 
@@ -257,7 +266,7 @@ final class MouseTracker {
 			if enableDebugLogging {
 				print("MouseTracker [CGEvent]: Sending position update: \(position)")
 			}
-			onMouseMove?(position, windowFrame.size)
+			onMouseMove?(position, screenFrame.size)
 		}
 	}
 

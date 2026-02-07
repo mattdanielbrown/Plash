@@ -44,15 +44,15 @@ extension AppState {
 
 		menu.addSeparator()
 
-		menu.addLinkItem("Examples", destination: "https://github.com/sindresorhus/Plash/discussions/136")
+		menu.addLinkItem("Examples", destination: "https://github.com/sindresorhus/Flux/discussions/136")
 
-		menu.addLinkItem("Tips", destination: "https://github.com/sindresorhus/Plash#tips")
+		menu.addLinkItem("Tips", destination: "https://github.com/sindresorhus/Flux#tips")
 
-		menu.addLinkItem("FAQ", destination: "https://github.com/sindresorhus/Plash#faq")
+		menu.addLinkItem("FAQ", destination: "https://github.com/sindresorhus/Flux#faq")
 
-		menu.addLinkItem("Scripting", destination: "https://github.com/sindresorhus/Plash#scripting")
+		menu.addLinkItem("Scripting", destination: "https://github.com/sindresorhus/Flux#scripting")
 
-		menu.addLinkItem("Website", destination: "https://sindresorhus.com/plash")
+		menu.addLinkItem("Website", destination: "https://sindresorhus.com/flux")
 
 		menu.addSeparator()
 
@@ -95,7 +95,7 @@ extension AppState {
 					}
 				}
 
-				menuItem.toolTip = "Updates the URL for the stored website in Plash to the current URL"
+				menuItem.toolTip = "Updates the URL for the stored website in Flux to the current URL"
 			}
 
 			menu.addCallbackItem(

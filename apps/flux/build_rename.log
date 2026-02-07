@@ -2,7 +2,7 @@ Command line invocation:
     /Users/stoked/Downloads/Xcode.app/Contents/Developer/usr/bin/xcodebuild -scheme Flux -project Flux.xcodeproj -configuration Debug build CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
 Build settings from command line:
-    CODE_SIGN_IDENTITY = 
+    CODE_SIGN_IDENTITY =
     CODE_SIGNING_ALLOWED = NO
     CODE_SIGNING_REQUIRED = NO
 
@@ -22,7 +22,7 @@ Resolved source packages:
 { platform:macOS, arch:arm64, id:00006040-000450D40187801C, name:My Mac }
 { platform:macOS, arch:x86_64, id:00006040-000450D40187801C, name:My Mac }
 { platform:macOS, name:Any Mac }
-note: Using codesigning identity override: 
+note: Using codesigning identity override:
 2026-01-21 06:51:28.239 xcodebuild[71584:17108174] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
 ComputePackagePrebuildTargetDependencyGraph
 
@@ -76,8 +76,8 @@ PhaseScriptExecution SwiftLint /Users/stoked/Library/Developer/Xcode/DerivedData
 
 ValidateDevelopmentAssets /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Intermediates.noindex/Flux.build/Debug/Flux.build (in target 'Flux' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux
-    builtin-validate-development-assets --validate YES_ERROR /Users/stoked/work/flux/apps/flux/Plash/Preview\ Content
-/Users/stoked/work/flux/apps/flux/Flux.xcodeproj: error: One of the paths in DEVELOPMENT_ASSET_PATHS does not exist: /Users/stoked/work/flux/apps/flux/Plash/Preview Content (in target 'Flux' from project 'Flux')
+    builtin-validate-development-assets --validate YES_ERROR /Users/stoked/work/flux/apps/flux/Flux/Preview\ Content
+/Users/stoked/work/flux/apps/flux/Flux.xcodeproj: error: One of the paths in DEVELOPMENT_ASSET_PATHS does not exist: /Users/stoked/work/flux/apps/flux/Flux/Preview Content (in target 'Flux' from project 'Flux')
 
 Copy /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Flux.app/Contents/Resources/Defaults_Defaults.bundle /Users/stoked/Library/Developer/Xcode/DerivedData/Flux-emqifihmshedyjfqofitxpedoeob/Build/Products/Debug/Defaults_Defaults.bundle (in target 'Flux' from project 'Flux')
     cd /Users/stoked/work/flux/apps/flux

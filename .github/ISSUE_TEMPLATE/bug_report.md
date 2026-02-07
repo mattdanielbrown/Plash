@@ -1,6 +1,6 @@
 ---
 name: 🐞 Bug report
-about: Create a report to help us improve Plash
+about: Create a report to help us improve Flux
 labels: bug
 ---
 
@@ -27,7 +27,7 @@ If applicable, add screenshots to help explain your problem.
 **Info**
 
  - macOS version: 
- - Plash version: 
+ - Flux version: 
 
 **Additional context**
 

@@ -19,7 +19,7 @@ final class WebViewController: NSViewController {
 		configuration.allowsAirPlayForMediaPlayback = false
 		configuration.applicationNameForUserAgent = "\(SSApp.name)/\(SSApp.version)"
 
-		// TODO: Enable this again when https://github.com/sindresorhus/Plash/issues/9 is fixed.
+		// TODO: Enable this again when https://github.com/sindresorhus/Flux/issues/9 is fixed.
 //		configuration.suppressesIncrementalRendering = true
 
 		let userContentController = WKUserContentController()
@@ -43,7 +43,7 @@ final class WebViewController: NSViewController {
 		webView.customUserAgent = SSWebView.safariUserAgent
 		webView.drawsBackground = false
 
-		userContentController.addJavaScript("document.documentElement.classList.add('is-plash-app')")
+		userContentController.addJavaScript("document.documentElement.classList.add('is-flux-app')")
 
 		if let website = WebsitesController.shared.current {
 			if website.invertColors2 != .never {
@@ -104,7 +104,10 @@ final class WebViewController: NSViewController {
 	// TODO: When Swift 6 is out, make this async and throw instead of using `onLoaded` handler.
 	func loadURL(_ url: URL) {
 		guard !url.isFileURL else {
-			_ = url.accessSandboxedURLByPromptingIfNeeded()
+			let isBundle = url.path.hasPrefix(Bundle.main.bundlePath)
+			if !isBundle {
+				_ = url.accessSandboxedURLByPromptingIfNeeded()
+			}
 			webView.loadFileURL(url.appendingPathComponent("index.html", isDirectory: false), allowingReadAccessTo: url)
 
 			return
@@ -141,7 +144,7 @@ final class WebViewController: NSViewController {
 
 		let script = """
 			(function() {
-				const event = new CustomEvent('plashMouseMove', {
+				const event = new CustomEvent('fluxMouseMove', {
 					detail: {
 						x: \(x),
 						y: \(y),
@@ -152,7 +155,43 @@ final class WebViewController: NSViewController {
 					}
 				});
 				document.dispatchEvent(event);
-				window.plashMouse = event.detail;
+				window.fluxMouse = event.detail;
+			})();
+		"""
+
+		webView.evaluateJavaScript(script, completionHandler: nil)
+	}
+
+	/**
+	Inject global mouse position for multi-monitor fluid continuity.
+	This is called by the DisplayManager to broadcast the same mouse position to all monitors.
+	*/
+	func injectGlobalMousePosition(
+		globalX: CGFloat,
+		globalY: CGFloat,
+		globalWidth: CGFloat,
+		globalHeight: CGFloat,
+		localX: CGFloat,
+		localY: CGFloat,
+		screenOffsetX: CGFloat,
+		screenOffsetY: CGFloat
+	) {
+		let script = """
+			(function() {
+				const event = new CustomEvent('fluxGlobalMouseMove', {
+					detail: {
+						globalX: \(globalX),
+						globalY: \(globalY),
+						globalWidth: \(globalWidth),
+						globalHeight: \(globalHeight),
+						localX: \(localX),
+						localY: \(localY),
+						screenOffsetX: \(screenOffsetX),
+						screenOffsetY: \(screenOffsetY)
+					}
+				});
+				document.dispatchEvent(event);
+				window.fluxGlobalMouse = event.detail;
 			})();
 		"""
 
@@ -173,7 +212,7 @@ final class WebViewController: NSViewController {
 	) {
 		let script = """
 			(function() {
-				window.plashDisplayArrangement = {
+				window.fluxDisplayArrangement = {
 					screenWidth: \(screenWidth),
 					screenHeight: \(screenHeight),
 					globalWidth: \(globalWidth),
@@ -182,8 +221,8 @@ final class WebViewController: NSViewController {
 					screenOffsetY: \(screenOffsetY)
 				};
 				// Dispatch event so scripts can react to display arrangement changes
-				const event = new CustomEvent('plashDisplayArrangement', {
-					detail: window.plashDisplayArrangement
+				const event = new CustomEvent('fluxDisplayArrangement', {
+					detail: window.fluxDisplayArrangement
 				});
 				document.dispatchEvent(event);
 			})();
@@ -202,7 +241,7 @@ extension WebViewController: WKNavigationDelegate {
 			let newURL = navigationAction.request.url,
 			originalURL.host != newURL.host
 		{
-			// Hide Plash if it's in front of everything.
+			// Hide Flux if it's in front of everything.
 			if Defaults[.isBrowsingMode], Defaults[.bringBrowsingModeToFront] {
 				Defaults[.isBrowsingMode] = false
 			}
